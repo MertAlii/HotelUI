@@ -371,7 +371,6 @@ body {
         background: var(--success-color);
     }
 
-/* Dropdown menus */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -688,7 +687,6 @@ body {
         font-size: 1rem;
     }
 
-/* Footer */
 .footer {
     grid-area: footer;
     padding: 1.5rem 2rem;
