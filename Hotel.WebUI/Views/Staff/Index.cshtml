@@ -3,25 +3,30 @@
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Personel Adı</th>
-        <th>Personel Ünvanı</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-        <th>Detaylar</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.StaffId</td>
-            <td>@item.Name</td>
-            <td>@item.Title</td>
-            <td><a href="#" class="btn btn-danger">Sil</a></td>
-            <td><a href="#" class="btn btn-success">Güncelle</a></td>
-            <td><a href="#" class="btn btn-info">Detaylar</a></td>
-        </tr>
-    }
-</table>
-<a href="#" class="btn btn-dark">Yeni Personel Girişi</a>
+<div class="container-fluid pt-4">
+    <table class="table table-sm table-glass-effect">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Personel Adı</th>
+                <th>Personel Ünvanı</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+                <th>Detaylar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.StaffId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Title</td>
+                    <td><a href="/Staff/DeleteStaff/@item.StaffId" class="btn btn-outline-danger btn-sm">Sil</a></td>
+                    <td><a href="#" class="btn btn-outline-success btn-sm">Güncelle</a></td>
+                    <td><a href="#" class="btn btn-outline-info btn-sm">Detaylar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

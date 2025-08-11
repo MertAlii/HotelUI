@@ -990,3 +990,33 @@ body {
     ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     }
+
+.table-glass-effect {
+    background: var(--bg-glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+    .table-glass-effect th,
+    .table-glass-effect td {
+        background-color: transparent !important;
+        color: var(--text-primary) !important;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .table-glass-effect tr:last-child td {
+        border-bottom: none; 
+    }
+
+    .table-glass-effect .btn {
+        transition: all 0.2s ease;
+    }
+
+        .table-glass-effect .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }

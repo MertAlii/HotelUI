@@ -1,6 +1,7 @@
 ﻿using Hotel.WebUI.Models.Staff;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Hotel.WebUI.Controllers
 {
@@ -26,10 +27,29 @@ namespace Hotel.WebUI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddStaff(StaffViewModel staff)
+        public async Task<IActionResult> AddStaff(AddStaffViewModel addStaffViewModel)
         {
-            
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(addStaffViewModel);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7020/api/Staff", content);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
         }
+
+        public async Task<IActionResult> DeleteStaff(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7020/api/Staff?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
     }
 }
