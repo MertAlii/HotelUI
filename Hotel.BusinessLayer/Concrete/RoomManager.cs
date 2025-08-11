@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.BusinessLayer.Concrete
 {
-    internal class RoomManager : IRoomService
+    public class RoomManager : IRoomService
     {
         private readonly IRoomDal _roomDal;
         public RoomManager(IRoomDal roomDal)
