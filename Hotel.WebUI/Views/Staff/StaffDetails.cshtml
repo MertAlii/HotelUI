@@ -1,0 +1,118 @@
+﻿@model UpdateStaffViewModel
+@{
+    ViewData["Title"] = "Personel Detayları";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<style>
+    .card-glass {
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+    }
+
+    .card-header-glass {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 1.5rem;
+    }
+
+    .card-body-glass {
+        background: transparent !important;
+    }
+
+    .card-footer-glass {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .text-light-gray {
+        color: #e0e0e0 !important;
+    }
+    
+    .label-text {
+        color: #a1a1aa;
+    }
+    
+    .value-text {
+        color: white;
+    }
+    
+    .social-link {
+        color: var(--info-color) !important;
+        transition: all 0.2s ease;
+    }
+    
+    .social-link:hover {
+        text-decoration: underline;
+        opacity: 0.9;
+    }
+</style>
+
+<div class="container-fluid pt-4">
+    <div class="card card-glass">
+        <div class="card-header card-header-glass">
+            <h5 class="text-light-gray mb-0">Personel Bilgileri</h5>
+        </div>
+        <div class="card-body card-body-glass">
+            <div class="row mb-4">
+                <div class="col-md-2 label-text">Personel ID:</div>
+                <div class="col-md-10 fw-bold value-text">@Model.StaffId</div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-2 label-text">Ad Soyad:</div>
+                <div class="col-md-10 fw-bold value-text">@Model.Name</div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-2 label-text">Ünvan:</div>
+                <div class="col-md-10 value-text">@Model.Title</div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.SocialMedia1))
+            {
+                <div class="row mb-4">
+                    <div class="col-md-2 label-text">Sosyal Medya 1:</div>
+                    <div class="col-md-10">
+                        <a href="@Model.SocialMedia1" target="_blank" class="social-link">@Model.SocialMedia1</a>
+                    </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.SocialMedia2))
+            {
+                <div class="row mb-4">
+                    <div class="col-md-2 label-text">Sosyal Medya 2:</div>
+                    <div class="col-md-10">
+                        <a href="@Model.SocialMedia2" target="_blank" class="social-link">@Model.SocialMedia2</a>
+                    </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.SocialMedia3))
+            {
+                <div class="row mb-4">
+                    <div class="col-md-2 label-text">Sosyal Medya 3:</div>
+                    <div class="col-md-10">
+                        <a href="@Model.SocialMedia3" target="_blank" class="social-link">@Model.SocialMedia3</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="card-footer card-footer-glass">
+            <div class="d-flex gap-2">
+                <a href="/Staff/Index" class="btn btn-outline-secondary">
+                    <i class="fa fa-arrow-left"></i> Geri
+                </a>
+                <a href="/Staff/UpdateStaff/@Model.StaffId" class="btn btn-outline-success">
+                    <i class="fa fa-edit"></i> Düzenle
+                </a>
+                <a href="/Staff/DeleteStaff/@Model.StaffId" class="btn btn-outline-danger"
+                   onclick="return confirm('Bu personeli silmek istediğinizden emin misiniz?')">
+                    <i class="fa fa-trash"></i> Sil
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
