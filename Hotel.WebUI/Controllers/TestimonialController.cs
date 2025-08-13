@@ -1,5 +1,4 @@
-﻿using Hotel.WebUI.Models.Staff;
-using Hotel.WebUI.Models.Testimonial;
+﻿using Hotel.WebUI.Dtos.TestimonialDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -22,13 +21,20 @@ namespace Hotel.WebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<TestimonialViewModel>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
                 return View(values);
             }
             return View();
         }
 
-        public async Task<IActionResult> AddTestimonial(TestimonialViewModel model)
+        [HttpGet]
+        public IActionResult AddTestimonial()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddTestimonial(AddTestimonialDto model)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(model);
@@ -60,19 +66,19 @@ namespace Hotel.WebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateTestimonialViewModel>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateTestimonialDto>(jsonData);
                 return View(values);
             }
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialViewModel model)
+        public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialDto model)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7020/api/Staff", content);
+            var responseMessage = await client.PutAsync("https://localhost:7020/api/Testimonial", content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

@@ -1,8 +1,7 @@
-﻿namespace Hotel.WebUI.Models.Testimonial
+﻿namespace Hotel.WebUI.Dtos.TestimonialDtos
 {
-    public class TestimonialViewModel
+    public class AddTestimonialDto
     {
-        public int TestimonialId { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

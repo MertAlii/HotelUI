@@ -1,4 +1,4 @@
-﻿@model List<TestimonialViewModel>
+﻿@model List<ResultTestimonialDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,6 +15,7 @@
                 <th>Referans Ünvanı</th>
                 <th>Sil</th>
                 <th>Güncelle</th>
+                <th>Detaylar</th>
             </tr>
         </thead>
         <tbody>
@@ -25,9 +26,9 @@
                     <td>@item.Image</td>
                     <td>@item.Name</td>
                     <td>@item.Title</td>
-                    <td><a href="/Staff/DeleteTestimonial/@item.TestimonialId" class="btn btn-outline-danger btn-sm">Sil</a></td>
-                    <td><a href="/Staff/UpdateTestimonial/@item.TestimonialId" class="btn btn-outline-success btn-sm">Güncelle</a></td>
-                    <td><a href="/Staff/StaffTestimonial/@item.TestimonialId" class="btn btn-outline-info btn-sm">Detaylar</a></td>
+                    <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" class="btn btn-outline-danger btn-sm">Sil</a></td>
+                    <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" class="btn btn-outline-success btn-sm">Güncelle</a></td>
+                    <td><a href="/Testimonial/TestimonialDetails/@item.TestimonialId" class="btn btn-outline-info btn-sm">Detaylar</a></td>
                 </tr>
             }
         </tbody>
