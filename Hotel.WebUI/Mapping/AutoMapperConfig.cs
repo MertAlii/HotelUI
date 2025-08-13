@@ -11,6 +11,7 @@ namespace Hotel.WebUI.Mapping
             CreateMap<ResultServiceDto, Service>().ReverseMap();
             CreateMap<CreateServiceDto, Service>().ReverseMap();
             CreateMap<UpdateServiceDto, Service>().ReverseMap();
+            CreateMap<CreateServiceDto, AppUser>().ReverseMap();
         }
     }
 }
