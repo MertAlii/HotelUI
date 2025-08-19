@@ -1,5 +1,4 @@
-﻿@using Hotel.WebUI.Dtos.AppUserDto
-@model CreateNewUserDto
+﻿@model CreateNewUserDto
 @{
     Layout = null;
 }
@@ -10,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Üyelik - Alkan Studio</title>
+    <title>Admin Giriş - Alkan Studio</title>
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
@@ -28,99 +27,61 @@
     </div>
     <!-- Preloader end -->
 
-    <div class="membership-wrapper">
-        <div class="membership-inner">
-            <div class="membership-content">
-                
+    <div class="login-wrapper">
+        <div class="login-inner">
+            <div class="login-content">
+
                 <!-- Header Section -->
-                <div class="membership-header text-center mb-4">
+                <div class="login-header text-center mb-4">
                     <div class="brand-logo mb-3">
                         <span class="logo-abbr">A</span>
                     </div>
-                    <h2 class="membership-title">Alkan Studio'ya Hoş Geldiniz</h2>
-                    <p class="membership-subtitle">Konforlu konaklama deneyimi için üye olun</p>
+                    <h2 class="login-title">Admin Panel</h2>
+                    <p class="login-subtitle">Yönetim paneline giriş yapın</p>
                 </div>
 
-                <!-- Membership Form -->
-                <div class="membership-form">
+                <!-- Login Form -->
+                <div class="login-form">
                     <form method="post" class="needs-validation" novalidate>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Ad</label>
-                                <input type="text" name="Name" class="form-control" placeholder="Adınızı giriniz" required />
-                                <div class="invalid-feedback">
-                                    Lütfen adınızı giriniz.
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Soyad</label>
-                                <input type="text" name="Surname" class="form-control" placeholder="Soyadınızı giriniz" required />
-                                <div class="invalid-feedback">
-                                    Lütfen soyadınızı giriniz.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Kullanıcı Adı</label>
-                            <input type="text" name="UserName" class="form-control" placeholder="Kullanıcı adınızı giriniz" required />
+                        <div class="mb-4">
+                            <label class="form-label">
+                                <i class="fa fa-user me-2"></i>Kullanıcı Adı
+                            </label>
+                            <input type="text" name="UserName" asp-for="Name" class="form-control" placeholder="Admin kullanıcı adınızı giriniz" required />
                             <div class="invalid-feedback">
                                 Lütfen kullanıcı adınızı giriniz.
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">E-posta</label>
-                            <input type="email" name="Mail" class="form-control" placeholder="E-posta adresinizi giriniz" required />
-                            <div class="invalid-feedback">
-                                Lütfen geçerli bir e-posta adresi giriniz.
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Şifre</label>
-                                <input type="password" name="Password" class="form-control" placeholder="Şifrenizi giriniz" required />
-                                <div class="invalid-feedback">
-                                    Lütfen şifrenizi giriniz.
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Şifre Tekrar</label>
-                                <input type="password" name="ConfirmPassword" class="form-control" placeholder="Şifrenizi tekrar giriniz" required />
-                                <div class="invalid-feedback">
-                                    Lütfen şifrenizi tekrar giriniz.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" id="terms" required>
-                            <label class="form-check-label" for="terms">
-                                <a href="#" class="text-decoration-none">Kullanım Şartları</a>'nı ve <a href="#" class="text-decoration-none">Gizlilik Politikası</a>'nı kabul ediyorum.
+                        <div class="mb-4">
+                            <label class="form-label">
+                                <i class="fa fa-lock me-2"></i>Şifre
                             </label>
+                            <div class="input-group">
+                                <input type="password" name="Password" id="password" asp-for="Password" class="form-control" placeholder="Admin şifrenizi giriniz" required />
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="fa fa-eye" id="eyeIcon"></i>
+                                </button>
+                            </div>
                             <div class="invalid-feedback">
-                                Devam etmek için şartları kabul etmelisiniz.
+                                Lütfen şifrenizi giriniz.
                             </div>
                         </div>
 
-                        <div class="d-grid gap-2 mb-4">
+                        <div class="d-grid gap-3 mb-4">
                             <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fa fa-user-plus me-2"></i>Üyeliği Tamamla
+                                <i class="fa fa-sign-in-alt me-2"></i>Admin Girişi
                             </button>
-                            <br />
-                            <a href="/Login" class="btn btn-outline-info btn-lg w-100">
-                                <i class="fa fa-sign-in-alt me-2"></i>Giriş Yap
-                            </a>
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
 
     <style>
-        .membership-wrapper {
+        .login-wrapper {
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -128,9 +89,9 @@
             padding: 2rem 1rem;
         }
 
-        .membership-inner {
+        .login-inner {
             width: 100%;
-            max-width: 800px;
+            max-width: 500px;
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
@@ -139,7 +100,7 @@
             box-shadow: 0 20px 40px var(--shadow-color);
         }
 
-        .membership-header .logo-abbr {
+        .login-header .logo-abbr {
             width: 80px;
             height: 80px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -151,15 +112,30 @@
             color: white;
             font-weight: bold;
             margin-bottom: 1rem;
+            animation: logoGlow 3s ease-in-out infinite alternate;
         }
 
-        .membership-title {
+        keyframes logoGlow {
+            from
+
+        {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        to {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+        }
+
+        }
+
+        .login-title {
             color: var(--text-primary);
             font-weight: 700;
             margin-bottom: 0.5rem;
+            font-size: 2rem;
         }
 
-        .membership-subtitle {
+        .login-subtitle {
             color: var(--text-secondary);
             font-size: 1.1rem;
             margin-bottom: 0;
@@ -168,7 +144,9 @@
         .form-label {
             color: var(--text-secondary);
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
         }
 
         .form-control {
@@ -176,20 +154,34 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             color: var(--text-primary);
-            padding: 0.75rem 1rem;
+            padding: 1rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
-        .form-control:focus {
+            .form-control:focus {
+                background: var(--bg-glass);
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+                color: var(--text-primary);
+            }
+
+            .form-control::placeholder {
+                color: var(--text-muted);
+            }
+
+        .input-group .btn {
             background: var(--bg-glass);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-left: none;
+            color: var(--text-secondary);
         }
 
-        .form-control::placeholder {
-            color: var(--text-muted);
-        }
+            .input-group .btn:hover {
+                background: var(--bg-tertiary);
+                color: var(--text-primary);
+                transform: none;
+            }
 
         .form-check-input:checked {
             background-color: var(--primary-color);
@@ -198,22 +190,38 @@
 
         .form-check-label {
             color: var(--text-secondary);
-        }
-
-        .form-check-label a {
-            color: var(--primary-color);
+            font-weight: 500;
         }
 
         .btn {
             border-radius: 12px;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--shadow-color);
+            .btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px var(--shadow-color);
+            }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 1rem 2rem;
         }
+
+        .forgot-password-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+            .forgot-password-link:hover {
+                color: var(--secondary-color);
+                text-decoration: underline;
+            }
 
         .feature-card {
             padding: 1.5rem;
@@ -224,21 +232,21 @@
             height: 100%;
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary-color);
-        }
+            .feature-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--primary-color);
+            }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: white;
         }
 
@@ -246,11 +254,12 @@
             color: var(--text-primary);
             font-weight: 600;
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .feature-card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin-bottom: 0;
         }
 
@@ -267,20 +276,32 @@
         }
 
         media (max-width: 768px) {
-            .membership-inner {
-                padding: 2rem 1.5rem;
-                margin: 1rem;
-            }
+            .login-inner
 
-            .membership-header .logo-abbr {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
+        {
+            padding: 2rem 1.5rem;
+            margin: 1rem;
+            max-width: 400px;
+        }
 
-            .membership-title {
-                font-size: 1.5rem;
-            }
+        .login-header .logo-abbr {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .login-title {
+            font-size: 1.5rem;
+        }
+
+        .admin-features {
+            margin-top: 3rem !important;
+        }
+
+        .feature-card {
+            padding: 1rem;
+        }
+
         }
     </style>
 
@@ -290,6 +311,22 @@
             var preloader = document.getElementById('preloader');
             if (preloader) {
                 preloader.classList.add('hide');
+            }
+        });
+
+        // Toggle Password Visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                password.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
             }
         });
 
@@ -310,21 +347,15 @@
             }, false);
         })();
 
-        // Password confirmation validation
-        document.addEventListener('DOMContentLoaded', function() {
-            var password = document.querySelector('input[name="Password"]');
-            var confirmPassword = document.querySelector('input[name="ConfirmPassword"]');
-
-            function validatePassword() {
-                if (password.value !== confirmPassword.value) {
-                    confirmPassword.setCustomValidity("Şifreler eşleşmiyor");
-                } else {
-                    confirmPassword.setCustomValidity('');
+        // Enter key submission
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const form = document.querySelector('form');
+                const submitBtn = document.querySelector('button[type="submit"]');
+                if (form && submitBtn) {
+                    submitBtn.click();
                 }
             }
-
-            password.addEventListener('change', validatePassword);
-            confirmPassword.addEventListener('keyup', validatePassword);
         });
     </script>
 
