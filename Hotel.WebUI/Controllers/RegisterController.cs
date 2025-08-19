@@ -16,13 +16,12 @@ namespace Hotel.WebUI.Controllers
             return View();
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Index(CreateNewUserDto createNewUserDto)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(createNewUserDto);
             }
             var appUser = new AppUser()
             {
