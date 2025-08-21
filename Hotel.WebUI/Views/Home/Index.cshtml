@@ -1,8 +1,187 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Ana Sayfa";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body py-5">
+                    <!-- Welcome Section -->
+                    <div class="text-center mb-5">
+                        <div class="welcome-icon mb-4">
+                            <i class="fa fa-home fa-3x text-primary"></i>
+                        </div>
+                        <h1 class="display-5 fw-bold text-primary mb-3">Hoş Geldiniz!</h1>
+                        <p class="lead text-muted">Alkan Studio Admin Paneli</p>
+                        <hr class="my-4" style="border-color: var(--border-color);">
+                    </div>
+                    
+                    <!-- Feature Cards -->
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon mb-4">
+                                        <i class="fa fa-users fa-2x"></i>
+                                    </div>
+                                    <h5 class="card-title mb-3">Personel Yönetimi</h5>
+                                    <p class="card-text text-muted mb-4">Personel ekleme, düzenleme ve yönetim işlemleri</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="/Staff/Index" class="btn btn-outline-primary">
+                                            <i class="fa fa-list me-2"></i>Personel Listesi
+                                        </a>
+                                        <a href="/Staff/AddStaff" class="btn btn-primary">
+                                            <i class="fa fa-plus me-2"></i>Yeni Ekle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon mb-4">
+                                        <i class="fa fa-cogs fa-2x"></i>
+                                    </div>
+                                    <h5 class="card-title mb-3">Servis Yönetimi</h5>
+                                    <p class="card-text text-muted mb-4">Sunulan hizmetlerin eklenmesi ve düzenlenmesi</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="/Service/Index" class="btn btn-outline-primary">
+                                            <i class="fa fa-list me-2"></i>Servis Listesi
+                                        </a>
+                                        <a href="/Service/AddService" class="btn btn-primary">
+                                            <i class="fa fa-plus me-2"></i>Yeni Ekle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mx-auto">
+                            <div class="feature-card h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon mb-4">
+                                        <i class="fa fa-star fa-2x"></i>
+                                    </div>
+                                    <h5 class="card-title mb-3">Referans Yönetimi</h5>
+                                    <p class="card-text text-muted mb-4">Müşteri referansları ve yorumlarının yönetimi</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="/Testimonial/Index" class="btn btn-outline-primary">
+                                            <i class="fa fa-list me-2"></i>Referans Listesi
+                                        </a>
+                                        <a href="/Testimonial/AddTestimonial" class="btn btn-primary">
+                                            <i class="fa fa-plus me-2"></i>Yeni Ekle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert">
+                                <h5 class="alert-heading">
+                                    <i class="fa fa-info-circle me-2"></i>Hızlı İpuçları
+                                </h5>
+                                <ul class="mb-0">
+                                    <li>Sol menüden istediğiniz modüle hızlıca erişebilirsiniz</li>
+                                    <li>Her sayfada "Yeni Ekle" butonları ile hızla kayıt oluşturabilirsiniz</li>
+                                    <li>Listeler üzerinde düzenleme ve silme işlemleri yapabilirsiniz</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    .welcome-icon {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        color: white !important;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .feature-card {
+        background: var(--bg-glass);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary-color);
+        box-shadow: 0 15px 35px var(--shadow-color);
+    }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        color: white;
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .card-title {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .card-text {
+        color: var(--text-secondary) !important;
+        line-height: 1.6;
+    }
+
+    .alert-info {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid var(--info-color);
+        border-radius: 12px;
+        color: var(--text-primary);
+    }
+
+    .alert-heading {
+        color: var(--info-color);
+    }
+
+    .btn-outline-primary:hover {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    media (max-width: 768px) {
+        .welcome-icon {
+            width: 80px;
+            height: 80px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .display-5 {
+            font-size: 2rem;
+        }
+    }
+</style>

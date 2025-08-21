@@ -1,36 +1,97 @@
 ﻿@model List<ResultTestimonialDto>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Referanslar";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<div class="container-fluid pt-4">
-    <table class="table table-sm table-glass-effect">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Referans Görseli</th>
-                <th>Referans Adı</th>
-                <th>Referans Ünvanı</th>
-                <th>Sil</th>
-                <th>Güncelle</th>
-                <th>Detaylar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.TestimonialId</td>
-                    <td>@item.Image</td>
-                    <td>@item.Name</td>
-                    <td>@item.Title</td>
-                    <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" class="btn btn-outline-danger btn-sm">Sil</a></td>
-                    <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" class="btn btn-outline-success btn-sm">Güncelle</a></td>
-                    <td><a href="/Testimonial/TestimonialDetails/@item.TestimonialId" class="btn btn-outline-info btn-sm">Detaylar</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="card-title mb-0">
+                        <i class="fa fa-star me-2"></i>Referans Listesi
+                    </h4>
+                    <a href="/Testimonial/AddTestimonial/" class="btn btn-primary">
+                        <i class="fa fa-plus me-2"></i>Yeni Referans Ekle
+                    </a>
+                </div>
+
+                @if (Model == null)
+                {
+                    <div class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Yükleniyor...</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-glass-effect">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th><i class="fa fa-image me-2"></i>Görsel</th>
+                                    <th><i class="fa fa-user me-2"></i>Ad Soyad</th>
+                                    <th><i class="fa fa-briefcase me-2"></i>Ünvan</th>
+                                    <th class="text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Any())
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="fw-bold">@item.TestimonialId</td>
+                                            <td>
+                                                <div class="avatar-img avatar-md">
+                                                    <img src="@item.Image" alt="@item.Name" loading="lazy">
+                                                </div>
+                                            </td>
+                                            <td>@item.Name</td>
+                                            <td><span class="badge badge-primary badge-pill">@item.Title</span></td>
+                                            <td class="text-center">
+                                                <div class="btn-group" role="group">
+                                                    <a href="/Testimonial/TestimonialDetails/@item.TestimonialId"
+                                                       class="btn btn-outline-info btn-sm"
+                                                       title="Detayları Görüntüle">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href="/Testimonial/UpdateTestimonial/@item.TestimonialId"
+                                                       class="btn btn-outline-success btn-sm"
+                                                       title="Düzenle">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    <a href="/Testimonial/DeleteTestimonial/@item.TestimonialId"
+                                                       class="btn btn-outline-danger btn-sm"
+                                                       title="Sil"
+                                                       onclick="return confirm('Bu referansı silmek istediğinizden emin misiniz?')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4">
+                                            <i class="fa fa-info-circle me-2"></i>Henüz referans kaydı bulunmuyor.
+                                            <br>
+                                            <a href="/Testimonial/AddTestimonial/" class="btn btn-primary btn-sm mt-3">
+                                                <i class="fa fa-plus me-2"></i>İlk Referansı Ekleyin
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>

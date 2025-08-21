@@ -1,21 +1,84 @@
 ﻿@model UpdateServiceDto
 @{
-    ViewData["Title"] = "UpdateService";
+    ViewData["Title"] = "Servis Güncelle";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<h1>Servis Güncelle</h1>
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fa fa-edit fa-2x text-success me-3"></i>
+                    <div>
+                        <h4 class="card-title mb-1">Servis Güncelle</h4>
+                        <p class="text-muted mb-0">ID: @Model.ServiceId - Servis bilgilerini düzenleyin</p>
+                    </div>
+                </div>
 
-<form method="post">
-    <input type="hidden" name="ServiceId" value="@Model.ServiceId" />
-    <label>Servis İkonu</label>
-    <input type="text" name="ServiceIcon" class="form-control" value="@Model.ServiceIcon" required />
-    <br />
-    <label>Servis Başlığı</label>
-    <input type="text" name="Title" class="form-control" value="@Model.Title" required />
-    <br />
-    <label>Servis Açıklaması</label>
-    <input type="text" name="Description" class="form-control" value="@Model.Description" required />
-    <br />
-    <button class="btn btn-primary">Güncelle</button>
-</form>
+                <form method="post" class="needs-validation" novalidate>
+                    <input type="hidden" name="ServiceId" value="@Model.ServiceId" />
+
+                    <div class="form-group mb-4">
+                        <label class="form-label">
+                            <i class="fa fa-icons me-2"></i>Servis İkonu *
+                        </label>
+                        <input type="text" name="ServiceIcon" class="form-control"
+                               value="@Model.ServiceIcon" placeholder="Örn: fa fa-wifi, fa fa-car, fa fa-utensils" required />
+                        <div class="form-text">FontAwesome ikon sınıfı giriniz</div>
+                        <div class="invalid-feedback">
+                            Lütfen servis ikonunu giriniz.
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label">
+                            <i class="fa fa-heading me-2"></i>Servis Başlığı *
+                        </label>
+                        <input type="text" name="Title" class="form-control"
+                               value="@Model.Title" placeholder="Servis başlığını giriniz" required />
+                        <div class="invalid-feedback">
+                            Lütfen servis başlığını giriniz.
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label">
+                            <i class="fa fa-align-left me-2"></i>Servis Açıklaması
+                        </label>
+                        <textarea name="Description" class="form-control" rows="4"
+                                  placeholder="Servis hakkında detaylı bilgi giriniz...">@Model.Description</textarea>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-save me-2"></i>Güncelle
+                        </button>
+                        <a href="/Service/Index" class="btn btn-secondary">
+                            <i class="fa fa-arrow-left me-2"></i>Geri Dön
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Form validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

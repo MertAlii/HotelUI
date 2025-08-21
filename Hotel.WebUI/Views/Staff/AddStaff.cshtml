@@ -1,26 +1,108 @@
 ﻿@model AddStaffDto
 @{
-    ViewData["Title"] = "AddStaff";
+    ViewData["Title"] = "Yeni Personel Ekle";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<h1>AddStaff</h1>
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fa fa-user-plus fa-2x text-primary me-3"></i>
+                    <div>
+                        <h4 class="card-title mb-1">Yeni Personel Ekle</h4>
+                        <p class="text-muted mb-0">Personel bilgilerini doldurun</p>
+                    </div>
+                </div>
 
-<form method="post">
-    <label>Personel Adı</label>
-    <input type="text" name="Name" class="form-control" required />
-    <br />
-    <label>Personel Ünvanı</label>
-    <input type="text" name="Title" class="form-control" required />
-    <br />
-    <label>Sosyal Medya 1</label>
-    <input type="text" name="SocialMedia1" class="form-control" />
-    <br />
-    <label>Sosyal Medya 2</label>
-    <input type="text" name="SocialMedia2" class="form-control" />
-    <br />
-    <label>Sosyal Medya 3</label>
-    <input type="text" name="SocialMedia3" class="form-control" />
-    <br />
-    <button class="btn btn-primary">Kaydet</button>
-</form>
+                <form method="post" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fa fa-user me-2"></i>Personel Adı *
+                                </label>
+                                <input type="text" name="Name" class="form-control" 
+                                       placeholder="Ad ve soyad giriniz" required />
+                                <div class="invalid-feedback">
+                                    Lütfen personel adını giriniz.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fa fa-briefcase me-2"></i>Personel Ünvanı *
+                                </label>
+                                <input type="text" name="Title" class="form-control" 
+                                       placeholder="Ünvan giriniz" required />
+                                <div class="invalid-feedback">
+                                    Lütfen personel ünvanını giriniz.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fab fa-facebook me-2"></i>Facebook
+                                </label>
+                                <input type="text" name="SocialMedia1" class="form-control" 
+                                       placeholder="facebook.com/kullaniciadi veya tam URL" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fab fa-twitter me-2"></i>Twitter
+                                </label>
+                                <input type="text" name="SocialMedia2" class="form-control" 
+                                       placeholder="twitter.com/kullaniciadi veya tam URL" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <i class="fab fa-linkedin me-2"></i>LinkedIn
+                                </label>
+                                <input type="text" name="SocialMedia3" class="form-control" 
+                                       placeholder="linkedin.com/in/kullaniciadi veya tam URL" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-save me-2"></i>Kaydet
+                        </button>
+                        <a href="/Staff/Index" class="btn btn-secondary">
+                            <i class="fa fa-arrow-left me-2"></i>Geri Dön
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Form validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

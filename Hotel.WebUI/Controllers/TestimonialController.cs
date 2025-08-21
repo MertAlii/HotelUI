@@ -16,15 +16,28 @@ namespace Hotel.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7020/api/Testimonial");
-            if (responseMessage.IsSuccessStatusCode)
+            try
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:7020/api/Testimonial");
+                
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
+                    return View(values ?? new List<ResultTestimonialDto>());
+                }
+                else
+                {
+                    // API çağrısı başarısız, boş liste döndür
+                    return View(new List<ResultTestimonialDto>());
+                }
             }
-            return View();
+            catch (Exception)
+            {
+                // Hata durumunda boş liste döndür
+                return View(new List<ResultTestimonialDto>());
+            }
         }
 
         [HttpGet]
@@ -36,54 +49,86 @@ namespace Hotel.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTestimonial(AddTestimonialDto model)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7020/api/Testimonial", content);
-            if (responseMessage.IsSuccessStatusCode)
+            try
             {
-                return RedirectToAction("Index");
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(model);
+                StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PostAsync("https://localhost:7020/api/Testimonial", content);
+                
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            return View();
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Bir hata oluştu. Lütfen tekrar deneyin.");
+            }
+            return View(model);
         }
 
         public async Task<IActionResult> DeleteTestimonial(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7020/api/Testimonial?id={id}");
-            if (responseMessage.IsSuccessStatusCode)
+            try
             {
-                return RedirectToAction("Index");
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.DeleteAsync($"https://localhost:7020/api/Testimonial?id={id}");
+                
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            return View();
+            catch (Exception)
+            {
+                // Hata durumunda index'e yönlendir
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         public async Task<IActionResult> UpdateTestimonial(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7020/api/Testimonial/{id}");
-            if (responseMessage.IsSuccessStatusCode)
+            try
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateTestimonialDto>(jsonData);
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync($"https://localhost:7020/api/Testimonial/{id}");
+                
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<UpdateTestimonialDto>(jsonData);
+                    return View(values);
+                }
             }
-            return View();
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialDto model)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7020/api/Testimonial", content);
-            if (responseMessage.IsSuccessStatusCode)
+            try
             {
-                return RedirectToAction("Index");
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(model);
+                StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PutAsync("https://localhost:7020/api/Testimonial", content);
+                
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            return View();
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Bir hata oluştu. Lütfen tekrar deneyin.");
+            }
+            return View(model);
         }
     }
 }

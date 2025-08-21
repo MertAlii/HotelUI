@@ -1,29 +1,69 @@
 ﻿@model List<ResultServiceDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Servis Listesi";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<div class="container-fluid pt-4">
-    <table class="table table-sm table-glass-effect">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Servis Başlığı</th>
-                <th>Sil</th>
-                <th>Güncelle</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.ServiceId</td>
-                    <td>@item.Title</td>
-                    <td><a href="/Service/DeleteService/@item.ServiceId" class="btn btn-outline-danger btn-sm">Sil</a></td>
-                    <td><a href="/Service/UpdateService/@item.ServiceId" class="btn btn-outline-success btn-sm">Güncelle</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div> 
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="card-title mb-0">
+                        <i class="fa fa-cogs me-2"></i>Servis Listesi
+                    </h4>
+                    <a href="/Service/AddService/" class="btn btn-primary">
+                        <i class="fa fa-plus me-2"></i>Yeni Servis Ekle
+                    </a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-glass-effect">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th><i class="fa fa-tag me-2"></i>Servis Başlığı</th>
+                                <th class="text-center">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-bold">@item.ServiceId</td>
+                                        <td>@item.Title</td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <a href="/Service/UpdateService/@item.ServiceId"
+                                                   class="btn btn-outline-success btn-sm"
+                                                   title="Düzenle">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="/Service/DeleteService/@item.ServiceId"
+                                                   class="btn btn-outline-danger btn-sm"
+                                                   title="Sil"
+                                                   onclick="return confirm('Bu servisi silmek istediğinizden emin misiniz?')">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3" class="text-center py-4">
+                                        <i class="fa fa-info-circle me-2"></i>Henüz servis kaydı bulunmuyor.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

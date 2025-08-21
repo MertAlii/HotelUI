@@ -1,33 +1,76 @@
 ﻿@model List<ResultStaffDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Personel Listesi";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<div class="container-fluid pt-4">
-    <table class="table table-sm table-glass-effect">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Personel Adı</th>
-                <th>Personel Ünvanı</th>
-                <th>Sil</th>
-                <th>Güncelle</th>
-                <th>Detaylar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.StaffId</td>
-                    <td>@item.Name</td>
-                    <td>@item.Title</td>
-                    <td><a href="/Staff/DeleteStaff/@item.StaffId" class="btn btn-outline-danger btn-sm">Sil</a></td>
-                    <td><a href="/Staff/UpdateStaff/@item.StaffId" class="btn btn-outline-success btn-sm">Güncelle</a></td>
-                    <td><a href="/Staff/StaffDetails/@item.StaffId" class="btn btn-outline-info btn-sm">Detaylar</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div> 
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="card-title mb-0">
+                        <i class="fa fa-users me-2"></i>Personel Listesi
+                    </h4>
+                    <a href="/Staff/AddStaff/" class="btn btn-primary">
+                        <i class="fa fa-plus me-2"></i>Yeni Personel Ekle
+                    </a>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-glass-effect">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th><i class="fa fa-user me-2"></i>Personel Adı</th>
+                                <th><i class="fa fa-briefcase me-2"></i>Ünvan</th>
+                                <th class="text-center">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-bold">@item.StaffId</td>
+                                        <td>@item.Name</td>
+                                        <td><span class="badge badge-primary badge-pill">@item.Title</span></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <a href="/Staff/StaffDetails/@item.StaffId" 
+                                                   class="btn btn-outline-info btn-sm" 
+                                                   title="Detayları Görüntüle">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="/Staff/UpdateStaff/@item.StaffId" 
+                                                   class="btn btn-outline-success btn-sm" 
+                                                   title="Düzenle">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="/Staff/DeleteStaff/@item.StaffId" 
+                                                   class="btn btn-outline-danger btn-sm" 
+                                                   title="Sil"
+                                                   onclick="return confirm('Bu personeli silmek istediğinizden emin misiniz?')">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center py-4">
+                                        <i class="fa fa-info-circle me-2"></i>Henüz personel kaydı bulunmuyor.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
