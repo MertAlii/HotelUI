@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Alkan Studio</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon.png">
+
+    <!-- Gerekli Kütüphaneler -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- SADECE AUTH SAYFALARI İÇİN YENİ CSS DOSYASI -->
+    <link href="~/css/auth-style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+
+    <main class="auth-main">
+    </main>
+
+    <!-- Gerekli Scriptler -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sayfaya özel scriptlerin render edileceği alan -->
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

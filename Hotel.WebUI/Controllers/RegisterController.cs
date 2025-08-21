@@ -9,6 +9,10 @@ namespace Hotel.WebUI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
 
+        public RegisterController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
         [HttpGet]
         public IActionResult Index()
@@ -23,6 +27,7 @@ namespace Hotel.WebUI.Controllers
             {
                 return View(createNewUserDto);
             }
+
             var appUser = new AppUser()
             {
                 Name = createNewUserDto.Name,
@@ -30,12 +35,21 @@ namespace Hotel.WebUI.Controllers
                 UserName = createNewUserDto.UserName,
                 Email = createNewUserDto.Mail
             };
+
             var result = await _userManager.CreateAsync(appUser, createNewUserDto.Password);
+            
             if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Login");
             }
-            return View();
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(createNewUserDto);
+            }
         }
     }
 }

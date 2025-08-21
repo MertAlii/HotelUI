@@ -3,25 +3,24 @@
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8">
-    <!-- Bootstrap CSS -->
-    <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/css/bootstrap/bootstrap.rtl.css" rel="stylesheet" />
-    <link href="~/css/bootstrap/bootstrap.rtl.min.css" rel="stylesheet" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Alkan</title>
+    <title>Alkan - Admin Paneli</title>
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Modern CSS Dosyası -->
     <link href="~/css/site-admin.css" rel="stylesheet" />
 </head>
 
 <body>
     <!--*******************
-        Preloader start
+        Preloader Başlangıcı
     ********************-->
     <div id="preloader">
         <div class="loader">
@@ -31,90 +30,48 @@
         </div>
     </div>
     <!--*******************
-        Preloader end
+        Preloader Bitişi
     ********************-->
     <!--**********************************
-        Main wrapper start
+        Ana Kapsayıcı Başlangıcı
     ***********************************-->
     <div id="main-wrapper">
 
         <!--**********************************
-            Nav header start
+            Sidebar Başlangıcı
         ***********************************-->
-        <div class="nav-header">
+        <div class="sidebar">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="/Home/Index">
                     <b class="logo-abbr">A</b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        Alkan Studio
-                    </span>
+                    <span class="brand-title">Alkan Studio</span>
                 </a>
             </div>
-        </div>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-        <!--**********************************
-            Header start
-        ***********************************-->
-        <div class="header">
-            <div class="header-content clearfix">
-
-                <div class="nav-control">
-                    <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
-                </div>
-                <div class="header-left">
-                   
-                </div>
-                <div class="header-right">
-                    <ul class="clearfix">
-
-                        <li class="icons" style="display: flex; align-items: center; justify-content: center; height: 100%;">
-                            <a href="javascript:void(0)" class="log-user" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;">
-                                <i class="fa fa-user fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--**********************************
-            Header end
-        ***********************************-->
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div class="nk-sidebar">
-            <div class="nk-nav-scroll">
+            <div class="nav-scroll">
                 <ul class="metismenu">
                     <li class="nav-label">Ana Menü</li>
-                    <li class="sidebar-dropdown">
-                        <a href="#">
-                            <i class="fa fa-users"></i>
-                            <span class="nav-text">Personel işlemleri</span>
-                            <i class="fa fa-chevron-down ms-2"></i>
+                    <li>
+                        <a class="has-arrow" href="#" aria-expanded="false">
+                            <i class="fa fa-users menu-icon"></i>
+                            <span class="nav-text">Personel İşlemleri</span>
                         </a>
-                        <ul class="sidebar-submenu">
+                        <ul aria-expanded="false">
                             <li><a href="/Staff/Index/">Personel Listesi</a></li>
                             <li><a href="/Staff/AddStaff/">Yeni Personel Ekle</a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-dropdown">
+                    <li>
                         <a href="/Testimonial/Index">
-                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star menu-icon"></i>
                             <span class="nav-text">Referanslar</span>
                         </a>
                     </li>
-                    <li class="sidebar-dropdown">
-                        <a href="#">
-                            <i class="fa fa-cogs"></i>
-                            <span class="nav-text">Servis işlemleri</span>
-                            <i class="fa fa-chevron-down ms-2"></i>
+                    <li>
+                        <a class="has-arrow" href="#" aria-expanded="false">
+                            <i class="fa fa-cogs menu-icon"></i>
+                            <span class="nav-text">Servis İşlemleri</span>
                         </a>
-                        <ul class="sidebar-submenu">
+                        <ul aria-expanded="false">
                             <li><a href="/Service/Index/">Servis Listesi</a></li>
                             <li><a href="/Service/AddService/">Yeni Servis Ekle</a></li>
                         </ul>
@@ -124,45 +81,105 @@
             </div>
         </div>
         <!--**********************************
-            Sidebar end
+            Sidebar Bitişi
         ***********************************-->
-        <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            @RenderBody()
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                Mert Ali Alkan
+
+        <div class="main-content">
+            <!--**********************************
+                Header Başlangıcı
+            ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <div class="nav-control">
+                        <div class="hamburger">
+                            <span class="toggle-icon"><i class="fa fa-bars"></i></span>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <ul class="header-right-menu">
+                            <li class="icons dropdown">
+                                <div class="user-info">
+                                    <span class="user-name">Mert Ali Alkan</span>
+                                    <span class="user-role">Admin</span>
+                                </div>
+                                <a href="javascript:void(0)" class="log-user">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <!--**********************************
+                Header Bitişi
+            ***********************************-->
+            <!--**********************************
+                İçerik Alanı Başlangıcı
+            ***********************************-->
+            <div class="content-body">
+                @RenderBody()
+            </div>
+            <!--**********************************
+                İçerik Alanı Bitişi
+            ***********************************-->
+            <!--**********************************
+                Footer Başlangıcı
+            ***********************************-->
+            <div class="footer">
+                <div class="copyright">
+                    <p>&copy; @DateTime.Now.Year - Tasarım ve Geliştirme: Mert Ali Alkan</p>
+                </div>
+            </div>
+            <!--**********************************
+                Footer Bitişi
+            ***********************************-->
         </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
     <!--**********************************
-        Main wrapper end
+        Ana Kapsayıcı Bitişi
     ***********************************-->
-
+    <!-- Gerekli Scriptler -->
     <script>
+        // Sayfa yüklendiğinde preloader'ı gizle
         window.addEventListener('load', function() {
             var preloader = document.getElementById('preloader');
             if (preloader) {
-                preloader.classList.add('hide');
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 200);
             }
         });
+
+        // Sidebar menü açma/kapama logiği
+        document.querySelectorAll('.has-arrow').forEach(item => {
+            item.addEventListener('click', event => {
+                event.preventDefault();
+                const parent = item.parentElement;
+                const submenu = item.nextElementSibling;
+
+                if (parent.classList.contains('active')) {
+                    parent.classList.remove('active');
+                    submenu.style.maxHeight = null;
+                } else {
+                    // Diğer aktif menüleri kapat
+                    document.querySelectorAll('li.active').forEach(activeItem => {
+                        activeItem.classList.remove('active');
+                        activeItem.querySelector('ul').style.maxHeight = null;
+                    });
+                    parent.classList.add('active');
+                    submenu.style.maxHeight = submenu.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Mobil menü toggle
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+
     </script>
-    <!-- Bootstrap JS (body kapanışından hemen önce) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6DQDk9Q4CPrlGclX9nuq+8nbTov4+1p" crossorigin="anonymous"></script>
-    
-    <!-- Scripts section render point -->
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
