@@ -17,79 +17,89 @@ namespace Hotel.WebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7020/api/Staff");
-            if (responseMessage.IsSuccessStatusCode)
+            var response = await client.GetAsync("https://localhost:7020/api/Staff");
+            if (response.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultStaffDto>>(jsonData);
-                return View(values);
+                var json = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultStaffDto>>(json);
+                return View(values ?? new List<ResultStaffDto>());
             }
-            return View();
+
+            TempData["ErrorMessage"] = "Personel listesi alınamadı.";
+            return View(new List<ResultStaffDto>());
         }
 
-        public async Task<IActionResult> AddStaff(AddStaffDto addStaffDto)
+        [HttpGet]
+        public IActionResult AddStaff() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> AddStaff(AddStaffDto model)
         {
+            if (!ModelState.IsValid) return View(model);
+
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(addStaffDto);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7020/api/Staff", content);
-            if (responseMessage.IsSuccessStatusCode)
+            var json = JsonConvert.SerializeObject(model);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("https://localhost:7020/api/Staff", content);
+
+            if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Personel eklendi.";
                 return RedirectToAction("Index");
             }
-            return View();
+
+            TempData["ErrorMessage"] = "Personel eklenemedi.";
+            return View(model);
         }
 
         public async Task<IActionResult> DeleteStaff(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7020/api/Staff?id={id}");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
+            // API uses querystring for delete: [HttpDelete] without route template
+            var response = await client.DeleteAsync($"https://localhost:7020/api/Staff?id={id}");
+
+            if (response.IsSuccessStatusCode)
+                TempData["SuccessMessage"] = "Personel silindi.";
+            else
+                TempData["ErrorMessage"] = "Personel silinemedi.";
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         public async Task<IActionResult> UpdateStaff(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7020/api/Staff/{id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var response = await client.GetAsync($"https://localhost:7020/api/Staff/{id}");
+            if (response.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateStaffDto>(jsonData);
-                return View(values);
+                var json = await response.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateStaffDto>(json);
+                return View(value);
             }
-            return View();
+
+            TempData["ErrorMessage"] = "Personel bilgisi alınamadı.";
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateStaff(UpdateStaffDto updateStaffDto)
+        public async Task<IActionResult> UpdateStaff(UpdateStaffDto model)
         {
+            if (!ModelState.IsValid) return View(model);
+
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateStaffDto);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7020/api/Staff", content);
-            if (responseMessage.IsSuccessStatusCode)
+            var json = JsonConvert.SerializeObject(model);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync("https://localhost:7020/api/Staff", content);
+
+            if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Personel güncellendi.";
                 return RedirectToAction("Index");
             }
-            return View();
-        }
 
-        public async Task<IActionResult> StaffDetails(int id)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7020/api/Staff/{id}");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateStaffDto>(jsonData);
-                return View(values);
-            }
-            return View();
+            TempData["ErrorMessage"] = "Personel güncellenemedi.";
+            return View(model);
         }
     }
 }

@@ -5,28 +5,29 @@
 }
 
 :root {
-    --primary-color: #4A90E2;
-    --secondary-color: #50C878;
-    --accent-color: #E2A94A;
-    --success-color: #50C878;
-    --danger-color: #E24A4A;
-    --warning-color: #E2A94A;
-    --info-color: #4A90E2;
-    
-    /* Çok Koyu Arka Plan Renkleri (Düz) */
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --bg-card: #1c2128;
-    --bg-glass: #262c36;
-    
+    /* Brand / Accents */
+    --primary-color: #007BFF;   /* Mavi - baðlantýlar/düðmeler/vurgular */
+    --secondary-color: #1A1A1A; /* Koyu gri - degrade ikincil ton */
+    --accent-color: #FF4500;    /* Turuncu - CTA / vurgu */
+    --success-color: #1E90FF;   /* Mavi varyasyonu - baþarý */
+    --danger-color: #FF6347;    /* Kýrmýzýmsý - hata */
+    --warning-color: #FF4500;   /* Turuncu - uyarý */
+    --info-color: #007BFF;      /* Mavi - bilgi */
+
+    /* Arka Planlar */
+    --bg-primary: #000000;      /* Ana arka plan - siyah */
+    --bg-secondary: #1A1A1A;    /* Ýkincil arka plan - koyu gri */
+    --bg-tertiary: #333333;     /* Vurgu/hover arka plan - koyu gri */
+    --bg-card: #1A1A1A;         /* Kart arka planý */
+    --bg-glass: rgba(26,26,26,0.7); /* Yarý saydam koyu gri */
+
     /* Metin Renkleri */
-    --text-primary: #f0f6fc;
-    --text-secondary: #8b949e;
-    --text-muted: #6e7681;
-    
+    --text-primary: #FFFFFF;                 /* Beyaz */
+    --text-secondary: rgba(255,255,255,0.75);
+    --text-muted: rgba(255,255,255,0.55);
+
     /* Vurgu ve Border */
-    --border-color: #30363d;
+    --border-color: #333333;
     --shadow-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -103,7 +104,7 @@ body {
 .avatar-img:hover {
     transform: scale(1.05);
     border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
 .avatar-img img {
@@ -468,7 +469,7 @@ body {
 .form-control:focus, .form-select:focus {
     background: var(--bg-glass) !important;
     border-color: var(--primary-color) !important;
-    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2) !important;
     color: var(--text-primary) !important;
 }
 
@@ -533,7 +534,7 @@ body {
 }
 
 .btn-primary:hover {
-    background: #3a7bc8;
+    background: #1E90FF;
 }
 
 .btn-secondary {
@@ -861,4 +862,24 @@ body {
 
 .was-validated .form-control:valid {
     border-color: var(--success-color);
+}
+
+/* --- Overrides (append at the end of the file) --- */
+:root {
+    /* Make success green */
+    --success-color: #50C878;
+}
+
+/* Edit buttons in tables: keep outline style (append at the end) */
+.table-glass-effect .btn-outline-success,
+.table .btn-outline-success {
+    background: transparent !important;
+    color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+
+/* Reset previous hover override; keep default hover behavior */
+.table-glass-effect .btn-outline-success:hover,
+.table .btn-outline-success:hover {
+    filter: none !important;
 }

@@ -8,6 +8,21 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                @if (TempData["SuccessMessage"] is string ok && !string.IsNullOrWhiteSpace(ok))
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa fa-check-circle me-2"></i>@ok
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                @if (TempData["ErrorMessage"] is string err && !string.IsNullOrWhiteSpace(err))
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa fa-triangle-exclamation me-2"></i>@err
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="card-title mb-0">
                         <i class="fa fa-star me-2"></i>Referans Listesi

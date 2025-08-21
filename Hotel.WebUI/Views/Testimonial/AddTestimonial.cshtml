@@ -1,0 +1,104 @@
+@model AddTestimonialDto
+@{
+    ViewData["Title"] = "Yeni Referans Ekle";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fa fa-star fa-2x text-primary me-3"></i>
+                    <div>
+                        <h4 class="card-title mb-1">Yeni Referans Ekle</h4>
+                        <p class="text-muted mb-0">Referans bilgilerini doldurun</p>
+                    </div>
+                </div>
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger mb-4" role="alert">
+                        <i class="fa fa-exclamation-triangle me-2"></i>
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <div>@error.ErrorMessage</div>
+                        }
+                    </div>
+                }
+
+                <form method="post" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fa fa-user me-2"></i>Ad Soyad *
+                        </label>
+                        <input type="text" name="Name" asp-for="Name" class="form-control"
+                               placeholder="Ad Soyad giriniz" required />
+                        <div class="invalid-feedback">Lütfen ad soyad giriniz.</div>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fa fa-briefcase me-2"></i>Ünvan *
+                        </label>
+                        <input type="text" name="Title" asp-for="Title" class="form-control"
+                               placeholder="Ünvan giriniz" required />
+                        <div class="invalid-feedback">Lütfen ünvan giriniz.</div>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fa fa-comment-dots me-2"></i>Açýklama *
+                        </label>
+                        <textarea name="Description" asp-for="Description" class="form-control" rows="4"
+                                  placeholder="Müþteri yorumunu giriniz" required></textarea>
+                        <div class="invalid-feedback">Lütfen açýklama giriniz.</div>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="fa fa-image me-2"></i>Görsel (URL) *
+                        </label>
+                        <input type="text" name="Image" asp-for="Image" class="form-control"
+                               placeholder="https://... þeklinde görsel URL'i giriniz" required />
+                        <div class="invalid-feedback">Lütfen görsel URL'i giriniz.</div>
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-save me-2"></i>Kaydet
+                        </button>
+                        <a href="/Testimonial/Index" class="btn btn-secondary">
+                            <i class="fa fa-arrow-left me-2"></i>Geri Dön
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Bootstrap-style form validation
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.forEach.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+}

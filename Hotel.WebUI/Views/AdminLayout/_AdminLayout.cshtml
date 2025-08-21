@@ -17,6 +17,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <!-- Modern CSS Dosyası -->
     <link href="~/css/site-admin.css" rel="stylesheet" />
+
+    <style>
+        /* Fix duplicate breadcrumb divider: show divider only before non-first items */
+        .page-titles .breadcrumb .breadcrumb-item::before { content: none !important; }
+        .page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+            content: var(--bs-breadcrumb-divider, "/");
+        }
+    </style>
 </head>
 
 <body>
@@ -65,11 +73,8 @@
         ***********************************-->
         <div class="header">
             <div class="header-content">
-                <div class="header-left">
-                    <h4 class="page-title mb-0 text-white">Admin Paneli</h4>
-                </div>
                 <div class="header-right">
-                    <span class="text-white">Hoş Geldiniz</span>
+                    <span class="text-white"><strong>Hoş Geldiniz</strong></span>
                 </div>
             </div>
         </div>
@@ -100,11 +105,16 @@
                             <li><a href="/Staff/AddStaff/">Yeni Personel Ekle</a></li>
                         </ul>
                     </li>
+                    <!-- Referanslar menüsü açılır hale getirildi -->
                     <li>
-                        <a href="/Testimonial/Index" aria-expanded="false">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fa fa-star menu-icon"></i>
                             <span class="nav-text">Referanslar</span>
                         </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/Testimonial/Index/">Referans Listesi</a></li>
+                            <li><a href="/Testimonial/AddTestimonial/">Yeni Referans Ekle</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -129,8 +139,8 @@
         <div class="content-body">
             <div class="page-titles">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/Home/Index">Ana Sayfa</a></li>
+                    <ol class="breadcrumb" style="--bs-breadcrumb-divider: '/';">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Admin</a></li>
                         <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
                     </ol>
                 </nav>
@@ -152,7 +162,7 @@
     ***********************************-->
     <div class="footer">
         <div class="copyright">
-            <p>&copy; @DateTime.Now.Year - Tasarım ve Geliştirme: <strong>Mert Ali Alkan</strong></p>
+            <p><strong>Mert Ali Alkan</strong></p>
         </div>
     </div>
     <!--**********************************

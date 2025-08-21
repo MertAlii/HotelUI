@@ -25,8 +25,8 @@ namespace Hotel.WebUI.Controllers
                 return View(values);
             }
             return View();
-        } 
-        
+        }
+
         [HttpGet]
         public IActionResult AddService()
         {
@@ -46,20 +46,28 @@ namespace Hotel.WebUI.Controllers
             var responseMessage = await client.PostAsync("https://localhost:7020/api/Service", content);
             if (responseMessage.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Servis eklendi.";
                 return RedirectToAction("Index");
             }
-            return View();
+
+            TempData["ErrorMessage"] = "Servis eklenemedi.";
+            return View(model);
         }
 
         public async Task<IActionResult> DeleteService(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7020/api/Service/{id}");
+            // API şu an [HttpDelete] (parametre querystring ile)
+            var responseMessage = await client.DeleteAsync($"https://localhost:7020/api/Service?id={id}");
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                TempData["SuccessMessage"] = "Servis silindi.";
             }
-            return View();
+            else
+            {
+                TempData["ErrorMessage"] = "Servis silinemedi.";
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -73,7 +81,8 @@ namespace Hotel.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<UpdateServiceDto>(jsonData);
                 return View(values);
             }
-            return View();
+            TempData["ErrorMessage"] = "Servis bilgisi alınamadı.";
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -89,8 +98,10 @@ namespace Hotel.WebUI.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7020/api/Service", content);
             if (responseMessage.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Servis güncellendi.";
                 return RedirectToAction("Index");
             }
+            TempData["ErrorMessage"] = "Servis güncellenemedi.";
             return View(model);
         }
     }

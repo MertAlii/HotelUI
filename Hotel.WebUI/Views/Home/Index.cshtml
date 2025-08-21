@@ -3,98 +3,151 @@
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body py-5">
-                    <!-- Welcome Section -->
-                    <div class="text-center mb-5">
-                        <div class="welcome-icon mb-4">
-                            <i class="fa fa-home fa-3x text-primary"></i>
+<div class="dashboard">
+    <!-- Hero -->
+    <section class="hero position-relative overflow-hidden">
+        <div class="container-fluid">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <div class="hero-content">
+                        <div class="badge badge-glass mb-3">
+                            <i class="fa fa-bolt me-2"></i>
+                            Hoş Geldiniz
                         </div>
-                        <h1 class="display-5 fw-bold text-primary mb-3">Hoş Geldiniz!</h1>
-                        <p class="lead text-muted">Alkan Studio Admin Paneli</p>
-                        <hr class="my-4" style="border-color: var(--border-color);">
-                    </div>
-                    
-                    <!-- Feature Cards -->
-                    <div class="row g-4">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-card h-100">
-                                <div class="card-body text-center p-4">
-                                    <div class="feature-icon mb-4">
-                                        <i class="fa fa-users fa-2x"></i>
-                                    </div>
-                                    <h5 class="card-title mb-3">Personel Yönetimi</h5>
-                                    <p class="card-text text-muted mb-4">Personel ekleme, düzenleme ve yönetim işlemleri</p>
-                                    <div class="d-grid gap-2">
-                                        <a href="/Staff/Index" class="btn btn-outline-primary">
-                                            <i class="fa fa-list me-2"></i>Personel Listesi
-                                        </a>
-                                        <a href="/Staff/AddStaff" class="btn btn-primary">
-                                            <i class="fa fa-plus me-2"></i>Yeni Ekle
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-card h-100">
-                                <div class="card-body text-center p-4">
-                                    <div class="feature-icon mb-4">
-                                        <i class="fa fa-cogs fa-2x"></i>
-                                    </div>
-                                    <h5 class="card-title mb-3">Servis Yönetimi</h5>
-                                    <p class="card-text text-muted mb-4">Sunulan hizmetlerin eklenmesi ve düzenlenmesi</p>
-                                    <div class="d-grid gap-2">
-                                        <a href="/Service/Index" class="btn btn-outline-primary">
-                                            <i class="fa fa-list me-2"></i>Servis Listesi
-                                        </a>
-                                        <a href="/Service/AddService" class="btn btn-primary">
-                                            <i class="fa fa-plus me-2"></i>Yeni Ekle
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 mx-auto">
-                            <div class="feature-card h-100">
-                                <div class="card-body text-center p-4">
-                                    <div class="feature-icon mb-4">
-                                        <i class="fa fa-star fa-2x"></i>
-                                    </div>
-                                    <h5 class="card-title mb-3">Referans Yönetimi</h5>
-                                    <p class="card-text text-muted mb-4">Müşteri referansları ve yorumlarının yönetimi</p>
-                                    <div class="d-grid gap-2">
-                                        <a href="/Testimonial/Index" class="btn btn-outline-primary">
-                                            <i class="fa fa-list me-2"></i>Referans Listesi
-                                        </a>
-                                        <a href="/Testimonial/AddTestimonial" class="btn btn-primary">
-                                            <i class="fa fa-plus me-2"></i>Yeni Ekle
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <h1 class="display-5 fw-bold mb-3 text-gradient">Alkan Studio Admin Paneli</h1>
+                        <p class="lead text-muted mb-4">
+                            Modüllerinizi yönetin, hızlı aksiyon alın ve iş akışınızı hızlandırın.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="/Staff/Index" class="btn btn-primary">
+                                <i class="fa fa-users me-2"></i>Personeller
+                            </a>
+                            <a href="/Service/Index" class="btn btn-outline-primary">
+                                <i class="fa fa-cogs me-2"></i>Servisler
+                            </a>
+                            <a href="/Testimonial/Index" class="btn btn-outline-light">
+                                <i class="fa fa-star me-2"></i>Referanslar
+                            </a>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="hero-visual">
+                        <div class="orb orb-1"></div>
+                        <div class="orb orb-2"></div>
+                        <div class="orb orb-3"></div>
+                        <i class="fa fa-gauge-high fa-3x float-icon float-1"></i>
+                        <i class="fa fa-shield-halved fa-3x float-icon float-2"></i>
+                        <i class="fa fa-chart-line fa-3x float-icon float-3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-glow"></div>
+    </section>
 
-                    <!-- Quick Stats -->
-                    <div class="row mt-5">
-                        <div class="col-12">
-                            <div class="alert alert-info" role="alert">
-                                <h5 class="alert-heading">
-                                    <i class="fa fa-info-circle me-2"></i>Hızlı İpuçları
-                                </h5>
-                                <ul class="mb-0">
-                                    <li>Sol menüden istediğiniz modüle hızlıca erişebilirsiniz</li>
-                                    <li>Her sayfada "Yeni Ekle" butonları ile hızla kayıt oluşturabilirsiniz</li>
-                                    <li>Listeler üzerinde düzenleme ve silme işlemleri yapabilirsiniz</li>
-                                </ul>
-                            </div>
+    <div class="container-fluid py-4">
+        <!-- Quick Actions -->
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon pulse mb-4">
+                            <i class="fa fa-users fa-2x"></i>
                         </div>
+                        <h5 class="card-title mb-2">Personel Yönetimi</h5>
+                        <p class="card-text text-muted mb-4">Ekle, düzenle ve listele</p>
+                        <div class="d-grid gap-2">
+                            <a href="/Staff/Index" class="btn btn-outline-primary">
+                                <i class="fa fa-list me-2"></i>Personel Listesi
+                            </a>
+                            <a href="/Staff/AddStaff" class="btn btn-primary">
+                                <i class="fa fa-plus me-2"></i>Yeni Ekle
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon pulse mb-4">
+                            <i class="fa fa-cogs fa-2x"></i>
+                        </div>
+                        <h5 class="card-title mb-2">Servis Yönetimi</h5>
+                        <p class="card-text text-muted mb-4">Hizmetlerinizi yönetin</p>
+                        <div class="d-grid gap-2">
+                            <a href="/Service/Index" class="btn btn-outline-primary">
+                                <i class="fa fa-list me-2"></i>Servis Listesi
+                            </a>
+                            <a href="/Service/AddService" class="btn btn-primary">
+                                <i class="fa fa-plus me-2"></i>Yeni Ekle
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon pulse mb-4">
+                            <i class="fa fa-star fa-2x"></i>
+                        </div>
+                        <h5 class="card-title mb-2">Referans Yönetimi</h5>
+                        <p class="card-text text-muted mb-4">Müşteri yorumlarını yönetin</p>
+                        <div class="d-grid gap-2">
+                            <a href="/Testimonial/Index" class="btn btn-outline-primary">
+                                <i class="fa fa-list me-2"></i>Referans Listesi
+                            </a>
+                            <a href="/Testimonial/AddTestimonial" class="btn btn-primary">
+                                <i class="fa fa-plus me-2"></i>Yeni Ekle
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info + Tips -->
+        <div class="row g-4 mt-1">
+            <div class="col-xl-8">
+                <div class="card card-glass h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fa fa-rocket text-primary me-2"></i>
+                            <h5 class="mb-0">Hızlı Kısayollar</h5>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="/Staff/Index" class="chip">
+                                <i class="fa fa-user-gear me-2"></i>Personeller
+                            </a>
+                            <a href="/Service/Index" class="chip">
+                                <i class="fa fa-screwdriver-wrench me-2"></i>Servisler
+                            </a>
+                            <a href="/Testimonial/Index" class="chip">
+                                <i class="fa fa-comment-dots me-2"></i>Referanslar
+                            </a>
+                            <a href="/Home/Index" class="chip">
+                                <i class="fa fa-house me-2"></i>Ana Sayfa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card card-glass h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fa fa-lightbulb text-warning me-2"></i>
+                            <h5 class="mb-0">İpuçları</h5>
+                        </div>
+                        <ul class="mb-0 text-muted">
+                            <li>Sol menüden modüllere hızla erişin.</li>
+                            <li>Liste sayfalarında düzenle/sil aksiyonlarını kullanın.</li>
+                            <li>Yeni kayıtlar için “Yeni Ekle” butonlarını kullanın.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -103,29 +156,78 @@
 </div>
 
 <style>
-    .welcome-icon {
-        width: 100px;
-        height: 100px;
+    /* Hero */
+    .hero {
+        position: relative;
+        padding: 3.5rem 0 2rem;
+        background: radial-gradient(1200px 500px at 20% -20%,
+                    color-mix(in oklab, var(--primary-color) 25%, transparent),
+                    transparent 60%),
+                    radial-gradient(1000px 400px at 110% 0%,
+                    color-mix(in oklab, var(--secondary-color) 30%, transparent),
+                    transparent 60%);
+        border-bottom: 1px solid var(--border-color);
+    }
+    .text-gradient {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        border-radius: 20px;
-        display: flex;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .badge-glass {
+        background: var(--bg-glass);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        border-radius: 999px;
+        padding: .5rem 1rem;
+        backdrop-filter: blur(8px);
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-        color: white !important;
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        gap: .5rem;
+    }
+    .hero-visual {
+        position: relative;
+        height: 220px;
+        filter: drop-shadow(0 15px 35px var(--shadow-color));
+    }
+    .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(8px);
+        animation: float 8s ease-in-out infinite;
+        opacity: .9;
+    }
+    .orb-1 { width: 140px; height: 140px; background: linear-gradient(135deg, var(--primary-color), #8ab4ff); top: 10%; left: 10%; animation-delay: 0s; }
+    .orb-2 { width: 110px; height: 110px; background: linear-gradient(135deg, var(--secondary-color), #7dd3fc); bottom: 5%; right: 20%; animation-delay: .6s; }
+    .orb-3 { width: 90px;  height: 90px;  background: linear-gradient(135deg, #34d399, #22d3ee); top: 35%; right: 5%; animation-delay: 1.2s; }
+
+    .float-icon {
+        position: absolute;
+        color: var(--text-primary);
+        opacity: .15;
+        animation: bob 6s ease-in-out infinite;
+    }
+    .float-1 { top: 0; right: 0; }
+    .float-2 { bottom: 0; left: 20%; animation-delay: .8s; }
+    .float-3 { top: 10%; left: 55%; animation-delay: .4s; }
+
+    .hero-glow {
+        position: absolute;
+        inset: auto 0 -40px 0;
+        height: 40px;
+        background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.03));
     }
 
-    .feature-card {
+    /* Cards */
+    .feature-card, .card-glass {
         background: var(--bg-glass);
         border: 1px solid var(--border-color);
         border-radius: 16px;
-        transition: all 0.3s ease;
+        transition: all .3s ease;
         backdrop-filter: blur(10px);
     }
-
-    .feature-card:hover {
-        transform: translateY(-8px);
+    .feature-card:hover, .card-glass:hover {
+        transform: translateY(-6px);
         border-color: var(--primary-color);
         box-shadow: 0 15px 35px var(--shadow-color);
     }
@@ -143,45 +245,48 @@
         box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
     }
 
-    .card-title {
+    .pulse { animation: pulse 2.4s ease-in-out infinite; }
+
+    /* Chips */
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .5rem .9rem;
+        border: 1px solid var(--border-color);
+        border-radius: 999px;
+        background: var(--bg-card);
         color: var(--text-primary);
-        font-weight: 600;
+        text-decoration: none;
+        transition: all .2s ease;
     }
-
-    .card-text {
-        color: var(--text-secondary) !important;
-        line-height: 1.6;
-    }
-
-    .alert-info {
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid var(--info-color);
-        border-radius: 12px;
-        color: var(--text-primary);
-    }
-
-    .alert-heading {
-        color: var(--info-color);
-    }
-
-    .btn-outline-primary:hover {
-        background: var(--primary-color);
+    .chip:hover {
         border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--shadow-color);
     }
 
+    /* Animations */
+    keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50%      { transform: translateY(-14px); }
+    }
+    keyframes bob {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50%      { transform: translateY(-8px) rotate(2deg); }
+    }
+    keyframes pulse {
+        0%   { box-shadow: 0 0 0 0 rgba(99,102,241,.4); }
+        70%  { box-shadow: 0 0 0 20px rgba(99,102,241,0); }
+        100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+    }
+
+    /* Responsive */
+    media (max-width: 992px) {
+        .hero { padding: 2.5rem 0 1.5rem; }
+    }
     media (max-width: 768px) {
-        .welcome-icon {
-            width: 80px;
-            height: 80px;
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-        }
-
-        .display-5 {
-            font-size: 2rem;
-        }
+        .display-5 { font-size: 2rem; }
+        .feature-icon { width: 64px; height: 64px; }
     }
 </style>

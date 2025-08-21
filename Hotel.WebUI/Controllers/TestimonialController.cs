@@ -20,22 +20,17 @@ namespace Hotel.WebUI.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 var responseMessage = await client.GetAsync("https://localhost:7020/api/Testimonial");
-                
+
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var jsonData = await responseMessage.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
                     return View(values ?? new List<ResultTestimonialDto>());
                 }
-                else
-                {
-                    // API çağrısı başarısız, boş liste döndür
-                    return View(new List<ResultTestimonialDto>());
-                }
+                return View(new List<ResultTestimonialDto>());
             }
-            catch (Exception)
+            catch
             {
-                // Hata durumunda boş liste döndür
                 return View(new List<ResultTestimonialDto>());
             }
         }
@@ -55,14 +50,17 @@ namespace Hotel.WebUI.Controllers
                 var jsonData = JsonConvert.SerializeObject(model);
                 StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 var responseMessage = await client.PostAsync("https://localhost:7020/api/Testimonial", content);
-                
+
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                    TempData["SuccessMessage"] = "Referans eklendi.";
                     return RedirectToAction("Index");
                 }
+                TempData["ErrorMessage"] = "Referans eklenemedi.";
             }
-            catch (Exception)
+            catch
             {
+                TempData["ErrorMessage"] = "Referans eklenirken bir hata oluştu.";
                 ModelState.AddModelError("", "Bir hata oluştu. Lütfen tekrar deneyin.");
             }
             return View(model);
@@ -74,15 +72,17 @@ namespace Hotel.WebUI.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 var responseMessage = await client.DeleteAsync($"https://localhost:7020/api/Testimonial?id={id}");
-                
+
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                    TempData["SuccessMessage"] = "Referans silindi.";
                     return RedirectToAction("Index");
                 }
+                TempData["ErrorMessage"] = "Referans silinemedi.";
             }
-            catch (Exception)
+            catch
             {
-                // Hata durumunda index'e yönlendir
+                TempData["ErrorMessage"] = "Referans silinirken bir hata oluştu.";
             }
             return RedirectToAction("Index");
         }
@@ -94,16 +94,18 @@ namespace Hotel.WebUI.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 var responseMessage = await client.GetAsync($"https://localhost:7020/api/Testimonial/{id}");
-                
+
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var jsonData = await responseMessage.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<UpdateTestimonialDto>(jsonData);
                     return View(values);
                 }
+                TempData["ErrorMessage"] = "Referans bilgisi alınamadı.";
             }
-            catch (Exception)
+            catch
             {
+                TempData["ErrorMessage"] = "Referans bilgisi alınırken bir hata oluştu.";
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
@@ -118,14 +120,17 @@ namespace Hotel.WebUI.Controllers
                 var jsonData = JsonConvert.SerializeObject(model);
                 StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 var responseMessage = await client.PutAsync("https://localhost:7020/api/Testimonial", content);
-                
+
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                    TempData["SuccessMessage"] = "Referans güncellendi.";
                     return RedirectToAction("Index");
                 }
+                TempData["ErrorMessage"] = "Referans güncellenemedi.";
             }
-            catch (Exception)
+            catch
             {
+                TempData["ErrorMessage"] = "Referans güncellenirken bir hata oluştu.";
                 ModelState.AddModelError("", "Bir hata oluştu. Lütfen tekrar deneyin.");
             }
             return View(model);
