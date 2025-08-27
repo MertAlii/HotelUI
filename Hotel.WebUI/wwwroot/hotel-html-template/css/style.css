@@ -120,7 +120,24 @@
     height: 3rem;
 }
 
+/* Hero Slider Styling */
+.hero-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
+
 @media (max-width: 768px) {
+    .hero-image {
+        height: 70vh;
+    }
+    
     #header-carousel .carousel-item {
         position: relative;
         min-height: 450px;
@@ -488,4 +505,147 @@
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+/* === Modern Enhancements for Main Page === */
+
+
+/* Modern hero/slider title and description */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.hero-description {
+    font-size: 1.15rem;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Modern badge style */
+.hero-badge {
+    background: linear-gradient(90deg, var(--primary) 60%, #ffd580 100%);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: .5rem 1.2rem;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(254,161,22,0.12);
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* Modern button styles */
+.btn {
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(254,161,22,0.08);
+    transition: all .2s cubic-bezier(.4,0,.2,1);
+}
+.btn-primary, .btn-outline-light {
+    box-shadow: 0 4px 16px rgba(254,161,22,0.10);
+}
+.btn-primary:hover, .btn-outline-light:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(254,161,22,0.18);
+}
+.btn-outline-light {
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+}
+.btn-outline-light:hover {
+    background: #fff;
+    color: var(--primary);
+}
+
+/* Section spacing and card look */
+.main-wrapper {
+    padding-top: 0 !important;
+    background: linear-gradient(120deg, #f1f8ff 0%, #fffbe6 100%);
+}
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 2.5rem;
+    letter-spacing: -.5px;
+}
+.service-item, .testimonial-carousel .testimonial-item {
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(15,23,43,0.08);
+    border: 1px solid #f1f1f1;
+    transition: box-shadow .3s, border-color .3s;
+}
+.service-item:hover, .testimonial-carousel .testimonial-item:hover {
+    box-shadow: 0 8px 32px rgba(254,161,22,0.12);
+    border-color: var(--primary);
+}
+
+/* Responsive improvements */
+
+
+/* Smooth transitions for interactive elements */
+a, .btn, .service-item, .testimonial-carousel .testimonial-item {
+    transition: all .2s cubic-bezier(.4,0,.2,1);
+}
+
+/* Reservation Form Styling */
+.reservation-form .form-floating label {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.reservation-form .form-control,
+.reservation-form .form-select {
+    border: 2px solid rgba(15, 23, 43, 0.1);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.reservation-form .form-control:focus,
+.reservation-form .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(254, 161, 22, 0.25);
+}
+
+.modern-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Fix for image alignment issues */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carousel-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Text color fixes */
+body {
+    color: var(--dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark);
+}
+
+.text-muted {
+    color: #6c757d !important;
 }
