@@ -1,42 +1,130 @@
 ﻿<div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <div class="bg-white shadow" style="padding: 35px;">
-            <div class="row g-2">
-                <div class="col-md-10">
-                    <div class="row g-2">
-                        <div class="col-md-3">
-                            <div class="date" id="date1" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input"
-                                       placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="date" id="date2" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select">
-                                <option selected>Adult</option>
-                                <option value="1">Adult 1</option>
-                                <option value="2">Adult 2</option>
-                                <option value="3">Adult 3</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select">
-                                <option selected>Child</option>
-                                <option value="1">Child 1</option>
-                                <option value="2">Child 2</option>
-                                <option value="3">Child 3</option>
-                            </select>
-                        </div>
+        <div class="modern-card glass-effect shadow-lg" style="padding: 2rem; margin-top: -100px; position: relative; z-index: 10;">
+            <div class="row align-items-center">
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <div class="text-center text-lg-start">
+                        <h4 class="text-primary fw-bold mb-2">
+                            <i class="fas fa-calendar-alt me-2"></i>Hızlı Rezervasyon
+                        </h4>
+                        <p class="text-muted mb-0">Müsait tarihleri kontrol edin ve anında rezervasyon yapın</p>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <button class="btn btn-primary w-100">Submit</button>
+                <div class="col-lg-9">
+                    <form class="reservation-form">
+                        <div class="row g-3">
+                            <div class="col-lg-2 col-md-6">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="checkin" placeholder="Giriş Tarihi">
+                                    <label for="checkin">
+                                        <i class="fas fa-calendar me-2"></i>Giriş Tarihi
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="checkout" placeholder="Çıkış Tarihi">
+                                    <label for="checkout">
+                                        <i class="fas fa-calendar me-2"></i>Çıkış Tarihi
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="adults">
+                                        <option value="1">1 Yetişkin</option>
+                                        <option value="2">2 Yetişkin</option>
+                                        <option value="3">3 Yetişkin</option>
+                                        <option value="4">4 Yetişkin</option>
+                                    </select>
+                                    <label for="adults">
+                                        <i class="fas fa-user me-2"></i>Yetişkin
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="children">
+                                        <option value="0">Çocuk Yok</option>
+                                        <option value="1">1 Çocuk</option>
+                                        <option value="2">2 Çocuk</option>
+                                        <option value="3">3 Çocuk</option>
+                                    </select>
+                                    <label for="children">
+                                        <i class="fas fa-child me-2"></i>Çocuk
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="rooms">
+                                        <option value="1">1 Oda</option>
+                                        <option value="2">2 Oda</option>
+                                        <option value="3">3 Oda</option>
+                                        <option value="4">4 Oda</option>
+                                    </select>
+                                    <label for="rooms">
+                                        <i class="fas fa-bed me-2"></i>Oda
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="submit" class="btn btn-primary h-100 w-100">
+                                    <i class="fas fa-search me-2"></i>
+                                    <span class="d-none d-lg-inline">Ara</span>
+                                    <span class="d-lg-none">Rezervasyon Ara</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .booking {
+        position: relative;
+        margin-top: -100px !important;
+        z-index: 1;
+    }
+
+    .form-floating {
+        position: relative;
+    }
+
+    .form-floating > .form-control,
+    .form-floating > .form-select {
+        border-radius: 12px;
+        border: 2px solid var(--gray-200);
+        transition: all 0.3s ease;
+    }
+
+    .form-floating > .form-control:focus,
+    .form-floating > .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    }
+
+    .form-floating > label {
+        color: var(--gray-500);
+        font-weight: 500;
+    }
+
+    .reservation-form .btn {
+        border-radius: 12px;
+        font-weight: 600;
+    }
+
+    media (max-width: 768px) {
+        .modern-card {
+            margin-top: -50px !important;
+            padding: 1.5rem !important;
+        }
+        
+        .reservation-form .row {
+            row-gap: 1rem !important;
+        }
+    }
+</style>

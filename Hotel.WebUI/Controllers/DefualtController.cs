@@ -7,4 +7,9 @@ public class DefualtController : Controller
     {
         return View();
     }
+    [HttpGet]
+    public PartialViewResult _SubscribePartial()
+    {
+        return PartialView();
+    }
 }

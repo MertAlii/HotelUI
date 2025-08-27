@@ -1,38 +1,300 @@
-﻿<div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+﻿<div class="hero-slider-wrapper">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1"></button>
+        </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="w-100" src="~/hotel-html-template/img/carousel-1.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 700px;">
-                        <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Rüya Gibi Tatil</h6>
-                        <h1 class="display-3 text-white mb-4 animated slideInDown">Konforun Keyfini Çıkarmak İster Misiniz?</h1>
-                        <a href="/Room/Index/" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Odalarımız</a>
-                        <a href="/Booking/Index/" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Rezervasyon Yap</a>
+                <img class="hero-image" src="~/hotel-html-template/img/carousel-1.jpg" alt="Alkan Hotel - Lüks Konaklama">
+                <div class="carousel-caption d-flex align-items-center justify-content-center">
+                    <div class="hero-content">
+                        <div class="glass-effect hero-glass-content">
+                            <span class="badge hero-badge">
+                                <i class="fas fa-star me-2"></i>Premium Deneyim
+                            </span>
+                            <h1 class="hero-title animated slideInDown">
+                                Lüksün ve Konforun <br class="d-none d-md-block">
+                                <span class="text-warning">Buluşma Noktası</span>
+                            </h1>
+                            <p class="hero-description animated fadeInUp">
+                                Modern mimarisi, zarif tasarımı ve eşsiz hizmet anlayışıyla unutulmaz konaklama deneyimi yaşayın. 
+                                <span class="d-none d-lg-inline">Her detayda mükemmellik arayışımız sizleri bekliyor.</span>
+                            </p>
+                            <div class="hero-buttons animated fadeInUp">
+                                <a href="/Room/Index/" class="btn btn-primary hero-btn-primary">
+                                    <i class="fas fa-bed me-2"></i>
+                                    <span class="d-none d-sm-inline">Odalarımızı </span>Keşfedin
+                                </a>
+                                <a href="/Booking/Index/" class="btn btn-outline-light hero-btn-secondary">
+                                    <i class="fas fa-calendar-check me-2"></i>
+                                    <span class="d-none d-sm-inline">Hemen </span>Rezervasyon
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="~/hotel-html-template/img/carousel-2.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 700px;">
-                        <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Her Şey Dahil Paketler</h6>
-                        <h1 class="display-3 text-white mb-4 animated slideInDown">Eşsiz Deniz ve Orman Manzarası</h1>
-                        <a href="/Room/Index/" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Odalarımız</a>
-                        <a href="/Booking/Index/" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Rezervasyon Yap</a>
+                <img class="hero-image" src="~/hotel-html-template/img/carousel-2.jpg" alt="Alkan Hotel - Doğa Manzarası">
+                <div class="carousel-caption d-flex align-items-center justify-content-center">
+                    <div class="hero-content">
+                        <div class="glass-effect hero-glass-content">
+                            <span class="badge hero-badge bg-success">
+                                <i class="fas fa-leaf me-2"></i>Doğayla İç İçe
+                            </span>
+                            <h1 class="hero-title animated slideInDown">
+                                Eşsiz Deniz ve <br class="d-none d-md-block">
+                                <span class="text-success">Orman Manzarası</span>
+                            </h1>
+                            <p class="hero-description animated fadeInUp">
+                                Masmavi denizin ve yeşil ormanların büyülü manzarasında huzurun tadını çıkarın. 
+                                <span class="d-none d-lg-inline">Doğanın içinde modern konforun keyfini yaşayın.</span>
+                            </p>
+                            <div class="hero-buttons animated fadeInUp">
+                                <a href="/Room/Index/" class="btn btn-primary hero-btn-primary">
+                                    <i class="fas fa-mountain me-2"></i>
+                                    <span class="d-none d-sm-inline">Manzaralı </span>Odalar
+                                </a>
+                                <a href="/Booking/Index/" class="btn btn-outline-light hero-btn-secondary">
+                                    <i class="fas fa-calendar-plus me-2"></i>
+                                    <span class="d-none d-sm-inline">Özel </span>Paketler
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Önceki</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Sonraki</span>
         </button>
     </div>
 </div>
+
+<style>
+    /* Hero Slider Wrapper */
+    .hero-slider-wrapper {
+        width: 100%;
+        height: 100vh;
+        min-height: 600px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    #header-carousel {
+        height: 100%;
+    }
+
+    .carousel-inner {
+        height: 100%;
+    }
+
+    .carousel-item {
+        height: 100%;
+        position: relative;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .carousel-caption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(15, 23, 43, 0.7), rgba(0, 0, 0, 0.5));
+        z-index: 2;
+        padding: 2rem;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 900px;
+        text-align: center;
+    }
+
+    .hero-glass-content {
+        padding: 3rem;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+    }
+
+    .hero-badge {
+        background: rgba(37, 99, 235, 0.8);
+        color: white;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        backdrop-filter: blur(5px);
+    }
+
+    .hero-title {
+        color: white;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-description {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .hero-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .hero-btn-secondary {
+        border: 2px solid white;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+    }
+
+    .hero-btn-secondary:hover {
+        background: white;
+        color: var(--dark);
+        transform: translateY(-2px);
+    }
+
+    .carousel-indicators {
+        bottom: 30px;
+        z-index: 3;
+    }
+
+    .carousel-indicators button {
+        width: 50px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.5);
+        border: none;
+    }
+
+    .carousel-indicators .active {
+        background: white;
+    }
+
+    /* Responsive Styles */
+    media (max-width: 768px) {
+        .hero-slider-wrapper {
+            height: 80vh;
+            min-height: 500px;
+        }
+        
+        .carousel-caption {
+            padding: 1rem;
+        }
+        
+        .hero-glass-content {
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+        }
+        
+        .hero-badge {
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-title {
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .hero-btn-primary,
+        .hero-btn-secondary {
+            width: 100%;
+            max-width: 280px;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .carousel-indicators {
+            bottom: 20px;
+        }
+    }
+
+    media (max-width: 576px) {
+        .hero-slider-wrapper {
+            height: 70vh;
+            min-height: 450px;
+        }
+        
+        .hero-glass-content {
+            padding: 1.5rem 1rem;
+        }
+        
+        .hero-description {
+            font-size: 0.95rem;
+        }
+    }
+
+    /* Büyük ekranlar için */
+    media (min-width: 1400px) {
+        .hero-glass-content {
+            padding: 4rem;
+        }
+        
+        .hero-badge {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+        }
+        
+        .hero-btn-primary,
+        .hero-btn-secondary {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+        }
+    }
+
+    media (min-width: 1920px) {
+        .hero-glass-content {
+            padding: 5rem;
+        }
+    }
+</style>
