@@ -160,20 +160,17 @@
     .hero {
         position: relative;
         padding: 3.5rem 0 2rem;
-        background: radial-gradient(1200px 500px at 20% -20%,
-                    color-mix(in oklab, var(--primary-color) 25%, transparent),
-                    transparent 60%),
-                    radial-gradient(1000px 400px at 110% 0%,
-                    color-mix(in oklab, var(--secondary-color) 30%, transparent),
-                    transparent 60%);
+        background: radial-gradient(1200px 500px at 20% -20%, color-mix(in oklab, var(--primary-color) 25%, transparent), transparent 60%), radial-gradient(1000px 400px at 110% 0%, color-mix(in oklab, var(--secondary-color) 30%, transparent), transparent 60%);
         border-bottom: 1px solid var(--border-color);
     }
+
     .text-gradient {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
+
     .badge-glass {
         background: var(--bg-glass);
         border: 1px solid var(--border-color);
@@ -185,11 +182,13 @@
         align-items: center;
         gap: .5rem;
     }
+
     .hero-visual {
         position: relative;
         height: 220px;
         filter: drop-shadow(0 15px 35px var(--shadow-color));
     }
+
     .orb {
         position: absolute;
         border-radius: 50%;
@@ -197,9 +196,33 @@
         animation: float 8s ease-in-out infinite;
         opacity: .9;
     }
-    .orb-1 { width: 140px; height: 140px; background: linear-gradient(135deg, var(--primary-color), #8ab4ff); top: 10%; left: 10%; animation-delay: 0s; }
-    .orb-2 { width: 110px; height: 110px; background: linear-gradient(135deg, var(--secondary-color), #7dd3fc); bottom: 5%; right: 20%; animation-delay: .6s; }
-    .orb-3 { width: 90px;  height: 90px;  background: linear-gradient(135deg, #34d399, #22d3ee); top: 35%; right: 5%; animation-delay: 1.2s; }
+
+    .orb-1 {
+        width: 140px;
+        height: 140px;
+        background: linear-gradient(135deg, var(--primary-color), #8ab4ff);
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .orb-2 {
+        width: 110px;
+        height: 110px;
+        background: linear-gradient(135deg, var(--secondary-color), #7dd3fc);
+        bottom: 5%;
+        right: 20%;
+        animation-delay: .6s;
+    }
+
+    .orb-3 {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, #34d399, #22d3ee);
+        top: 35%;
+        right: 5%;
+        animation-delay: 1.2s;
+    }
 
     .float-icon {
         position: absolute;
@@ -207,9 +230,23 @@
         opacity: .15;
         animation: bob 6s ease-in-out infinite;
     }
-    .float-1 { top: 0; right: 0; }
-    .float-2 { bottom: 0; left: 20%; animation-delay: .8s; }
-    .float-3 { top: 10%; left: 55%; animation-delay: .4s; }
+
+    .float-1 {
+        top: 0;
+        right: 0;
+    }
+
+    .float-2 {
+        bottom: 0;
+        left: 20%;
+        animation-delay: .8s;
+    }
+
+    .float-3 {
+        top: 10%;
+        left: 55%;
+        animation-delay: .4s;
+    }
 
     .hero-glow {
         position: absolute;
@@ -226,11 +263,12 @@
         transition: all .3s ease;
         backdrop-filter: blur(10px);
     }
-    .feature-card:hover, .card-glass:hover {
-        transform: translateY(-6px);
-        border-color: var(--primary-color);
-        box-shadow: 0 15px 35px var(--shadow-color);
-    }
+
+        .feature-card:hover, .card-glass:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
 
     .feature-icon {
         width: 80px;
@@ -245,7 +283,9 @@
         box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
     }
 
-    .pulse { animation: pulse 2.4s ease-in-out infinite; }
+    .pulse {
+        animation: pulse 2.4s ease-in-out infinite;
+    }
 
     /* Chips */
     .chip {
@@ -260,33 +300,78 @@
         text-decoration: none;
         transition: all .2s ease;
     }
-    .chip:hover {
-        border-color: var(--primary-color);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px var(--shadow-color);
-    }
+
+        .chip:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
 
     /* Animations */
     keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50%      { transform: translateY(-14px); }
+        0%, 100%
+
+    {
+        transform: translateY(0);
     }
+
+    50% {
+        transform: translateY(-14px);
+    }
+
+    }
+
     keyframes bob {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        50%      { transform: translateY(-8px) rotate(2deg); }
+        0%, 100%
+
+    {
+        transform: translateY(0) rotate(0deg);
     }
+
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+
+    }
+
     keyframes pulse {
-        0%   { box-shadow: 0 0 0 0 rgba(99,102,241,.4); }
-        70%  { box-shadow: 0 0 0 20px rgba(99,102,241,0); }
-        100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+        0%
+
+    {
+        box-shadow: 0 0 0 0 rgba(99,102,241,.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(99,102,241,0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(99,102,241,0);
+    }
+
     }
 
     /* Responsive */
     media (max-width: 992px) {
-        .hero { padding: 2.5rem 0 1.5rem; }
+        .hero
+
+    {
+        padding: 2.5rem 0 1.5rem;
     }
+
+    }
+
     media (max-width: 768px) {
-        .display-5 { font-size: 2rem; }
-        .feature-icon { width: 64px; height: 64px; }
+        .display-5
+
+    {
+        font-size: 2rem;
+    }
+
+    .feature-icon {
+        width: 64px;
+        height: 64px;
+    }
+
     }
 </style>
