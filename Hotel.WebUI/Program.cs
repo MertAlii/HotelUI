@@ -1,8 +1,15 @@
-using Hotel.WebUI.Mapping;
 using Hotel.DataAccessLayer.Concrete;
 using Hotel.EntityLayer.Concrete;
+using Hotel.WebUI.Mapping;
+using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHttpClient("Api", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7020/api/");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
 
 // Add services to the container.
 builder.Services.AddDbContext<Context>();

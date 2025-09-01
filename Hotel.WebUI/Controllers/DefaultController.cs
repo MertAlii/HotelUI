@@ -5,11 +5,11 @@ using Newtonsoft.Json;
 using System.Text;
 
 namespace Hotel.WebUI.Controllers;
-public class DefualtController : Controller
+public class DefaultController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public DefualtController(IHttpClientFactory httpClientFactory)
+    public DefaultController(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
     }
