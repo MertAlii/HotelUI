@@ -39,3 +39,26 @@
     @await Component.InvokeAsync("_ScriptsPartial")
 </body>
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = ['rooms','reservation','contact'];
+  const navLinks = new Map(
+    sections.map(id => [id, document.querySelector(`.navbar a[href*="#${id}"]`)])
+  );
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link?.classList.remove('active'));
+        navLinks.get(entry.target.id)?.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+});
+</script>

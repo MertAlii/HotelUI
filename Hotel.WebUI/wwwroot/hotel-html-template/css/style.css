@@ -649,3 +649,8 @@ h1, h2, h3, h4, h5, h6 {
 .text-muted {
     color: #6c757d !important;
 }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
