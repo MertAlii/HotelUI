@@ -2,12 +2,8 @@
 using HotelProject.WebUI.Dtos.BookingDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelProject.WebUI.Controllers
 {
@@ -18,6 +14,7 @@ namespace HotelProject.WebUI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
+
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
@@ -63,6 +60,7 @@ namespace HotelProject.WebUI.Controllers
             }
             return View();
         }
+
         [HttpGet]
         public async Task<IActionResult> UpdateBooking(int id)
         {
@@ -74,21 +72,26 @@ namespace HotelProject.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<UpdateBookingDto>(jsonData);
                 return View(values);
             }
-            return View();
+            return RedirectToAction("Index");
         }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateBooking(UpdateBookingDto updateBookingDto)
         {
-
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateBookingDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("http://localhost:7020/api/Booking/UpdateBooking/", stringContent);
+            var stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var responseMessage = await client.PutAsync("https://localhost:7020/api/Booking/UpdateBooking", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Rezervasyon güncellendi.";
                 return RedirectToAction("Index");
             }
-            return View();
+
+            TempData["ErrorMessage"] = $"Güncelleme başarısız. Kod: {(int)responseMessage.StatusCode}";
+            return View(updateBookingDto);
         }
     }
 }
