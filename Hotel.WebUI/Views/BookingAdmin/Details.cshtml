@@ -1,0 +1,55 @@
+﻿@model Hotel.WebUI.Dtos.BookingDto.UpdateBookingDto
+@{
+    ViewData["Title"] = "Rezervasyon Detayı";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="card-title mb-0">
+                        <i class="fa fa-file-lines me-2"></i>Rezervasyon Detayı
+                    </h4>
+                    <div class="btn-group">
+                        <a asp-controller="BookingAdmin" asp-action="ApprovedReservation2" asp-route-id="@Model.BookingID" class="btn btn-outline-success btn-sm">
+                            <i class="fa fa-check me-1"></i>Onayla
+                        </a>
+                        <a asp-controller="BookingAdmin" asp-action="WaitReservation" asp-route-id="@Model.BookingID" class="btn btn-warning btn-sm">
+                            <i class="fa fa-clock me-1"></i>Beklet
+                        </a>
+                        <a asp-controller="BookingAdmin" asp-action="CancelReservation" asp-route-id="@Model.BookingID" class="btn btn-outline-danger btn-sm"
+                           onclick="return confirm('Rezervasyonu iptal etmek istediğinize emin misiniz?');">
+                            <i class="fa fa-times me-1"></i>İptal
+                        </a>
+                        <a asp-controller="BookingAdmin" asp-action="UpdateBooking" asp-route-id="@Model.BookingID" class="btn btn-outline-info btn-sm">
+                            <i class="fa fa-edit me-1"></i>Düzenle
+                        </a>
+                        <a asp-controller="BookingAdmin" asp-action="Index" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-arrow-left me-1"></i>Geri
+                        </a>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-glass-effect align-middle mb-0">
+                        <tbody>
+                            <tr><th style="width: 220px;">Rezervasyon No</th><td>@Model.BookingID</td></tr>
+                            <tr><th>Ad Soyad</th><td>@Model.Name</td></tr>
+                            <tr><th>E-posta</th><td>@Model.Mail</td></tr>
+                            <tr><th>Giriş Tarihi</th><td>@Model.Checkin.ToString("dd.MM.yyyy")</td></tr>
+                            <tr><th>Çıkış Tarihi</th><td>@Model.CheckOut.ToString("dd.MM.yyyy")</td></tr>
+                            <tr><th>Yetişkin / Çocuk</th><td>@Model.AdultCount Y / @Model.ChildCount Ç</td></tr>
+                            <tr><th>Oda Sayısı</th><td>@Model.RoomCount</td></tr>
+                            <tr><th>Durum</th><td><span class="badge text-bg-secondary">@Model.Status</span></td></tr>
+                            <tr><th>Özel İstekler</th><td>@(string.IsNullOrWhiteSpace(Model.SpecialRequest) ? "-" : Model.SpecialRequest)</td></tr>
+                            <tr><th>Açıklama</th><td>@(string.IsNullOrWhiteSpace(Model.Description) ? "-" : Model.Description)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -86,28 +86,28 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="/BookingAdmin/ApprovedReservation2/@item.BookingID"
+                                                <a asp-controller="BookingAdmin" asp-action="ApprovedReservation2" asp-route-id="@item.BookingID"
                                                    class="btn btn-outline-success btn-sm"
                                                    title="Onayla">
                                                     <i class="fa fa-check"></i>
                                                 </a>
-                                                <a href="/BookingAdmin/CancelReservation/@item.BookingID"
+                                                <a asp-controller="BookingAdmin" asp-action="CancelReservation" asp-route-id="@item.BookingID"
                                                    class="btn btn-outline-danger btn-sm"
                                                    title="İptal Et"
                                                    onclick="return confirm('Rezervasyonu iptal etmek istediğinize emin misiniz?');">
                                                     <i class="fa fa-times"></i>
                                                 </a>
-                                                <a href="/BookingAdmin/WaitReservation/@item.BookingID"
+                                                <a asp-controller="BookingAdmin" asp-action="WaitReservation" asp-route-id="@item.BookingID"
                                                    class="btn btn-warning btn-sm"
                                                    title="Beklemeye Al">
                                                     <i class="fa fa-clock"></i>
                                                 </a>
-                                                <a href="/BookingAdmin/UpdateBooking/@item.BookingID"
+                                                <a asp-controller="BookingAdmin" asp-action="UpdateBooking" asp-route-id="@item.BookingID"
                                                    class="btn btn-outline-info btn-sm"
                                                    title="Güncelle">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <a href="/BookingAdmin/UpdateBooking/@item.BookingID"
+                                                <a asp-controller="BookingAdmin" asp-action="Details" asp-route-id="@item.BookingID"
                                                    class="btn btn-dark btn-sm"
                                                    title="Detaylar">
                                                     <i class="fa fa-eye"></i>
