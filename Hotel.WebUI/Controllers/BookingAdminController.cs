@@ -83,7 +83,7 @@ namespace HotelProject.WebUI.Controllers
             var jsonData = JsonConvert.SerializeObject(updateBookingDto);
             var stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-            var responseMessage = await client.PutAsync("https://localhost:7020/api/Booking/UpdateBooking", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:7020/api/Booking", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Rezervasyon güncellendi.";

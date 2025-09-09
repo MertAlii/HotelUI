@@ -1,0 +1,64 @@
+﻿@model Hotel.WebUI.Dtos.BookingDto.UpdateBookingDto
+
+@{
+    ViewData["Title"] = "Rezervasyon Güncelle";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h2>Rezervasyon Güncelle</h2>
+
+<form asp-action="UpdateBooking" method="post">
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Mail" class="form-label"></label>
+        <input asp-for="Mail" class="form-control" />
+        <span asp-validation-for="Mail" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Checkin" class="form-label"></label>
+        <input asp-for="Checkin" type="date" class="form-control" />
+        <span asp-validation-for="Checkin" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CheckOut" class="form-label"></label>
+        <input asp-for="CheckOut" type="date" class="form-control" />
+        <span asp-validation-for="CheckOut" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="AdultCount" class="form-label"></label>
+        <input asp-for="AdultCount" class="form-control" />
+        <span asp-validation-for="AdultCount" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ChildCount" class="form-label"></label>
+        <input asp-for="ChildCount" class="form-control" />
+        <span asp-validation-for="ChildCount" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="RoomCount" class="form-label"></label>
+        <input asp-for="RoomCount" class="form-control" />
+        <span asp-validation-for="RoomCount" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SpecialRequest" class="form-label"></label>
+        <textarea asp-for="SpecialRequest" class="form-control"></textarea>
+        <span asp-validation-for="SpecialRequest" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="BookingID" />
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
