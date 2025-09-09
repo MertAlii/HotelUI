@@ -49,18 +49,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @if (hasData)
-                        {
+                            @if (hasData)
+                            {
                                 @foreach (var item in Model)
                                 {
                                     row++;
-                                    var statusClass = item.Status?.Trim().ToLower() switch
+                                    var tr = new System.Globalization.CultureInfo("tr-TR");
+                                    var statusKey = string.IsNullOrWhiteSpace(item.Status)
+                                    ? string.Empty
+                                    : tr.TextInfo.ToLower(item.Status.Trim());
+
+                                    var statusClass = statusKey switch
                                     {
                                         "onaylandı" => "success",
-                                        "beklemede" => "warning",
+                                        "onay bekliyor" => "warning",
                                         "iptal edildi" => "danger",
                                         _ => "primary"
                                     };
+                                    
                                     <tr>
                                         <td class="fw-bold">@row</td>
                                         <td>@item.Name</td>
@@ -68,15 +74,15 @@
                                         <td>@item.Checkin.ToString("dd.MM.yyyy")</td>
                                         <td>@item.CheckOut.ToString("dd.MM.yyyy")</td>
                                         <td>
-                                            <span class="badge badge-primary badge-pill">
+                                            <span class="badge text-bg-primary rounded-pill">
                                                 @item.AdultCount Y / @item.ChildCount Ç
                                             </span>
                                         </td>
                                         <td>
-                                            <span class="badge badge-secondary badge-pill">@item.RoomCount</span>
+                                            <span class="badge text-bg-secondary rounded-pill">@item.RoomCount</span>
                                         </td>
                                         <td>
-                                            <span class="badge badge-@statusClass px-2">@item.Status</span>
+                                            <span class="badge text-bg-@statusClass px-2">@item.Status</span>
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
@@ -110,15 +116,15 @@
                                         </td>
                                     </tr>
                                 }
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="9" class="text-center py-4">
-                                    <i class="fa fa-info-circle me-2"></i>Henüz rezervasyon kaydı bulunmuyor.
-                                </td>
-                            </tr>
-                        }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="9" class="text-center py-4">
+                                        <i class="fa fa-info-circle me-2"></i>Henüz rezervasyon kaydı bulunmuyor.
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -126,4 +132,4 @@
             </div>
         </div>
     </div>
-< </div>
+</div>
