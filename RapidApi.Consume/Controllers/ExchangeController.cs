@@ -1,28 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hotel.Consume.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RapidApiConsume.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace Hotel.Consume.Controllers;
-public class ExchangeController : Controller
+namespace RapidApiConsume.Controllers
 {
-    public async Task<IActionResult> Index()
+    public class ExchangeController : Controller
     {
-        using System.Net.Http.Headers;
-        var client = new HttpClient();
-        var request = new HttpRequestMessage
+        public async Task<IActionResult> Index()
         {
-            Method = HttpMethod.Get,
-            RequestUri = new Uri("https://booking-com.p.rapidapi.com/v1/attractions/calendar?attraction_id=PRFZkGSVnM5d&currency=AED&locale=en-gb"),
-            Headers =
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates?locale=en-gb&currency=TRY"),
+                Headers =
     {
-        { "x-rapidapi-key", "0016d71d35msh16036b545e22b6ap10ed2fjsn50730392bc19" },
-        { "x-rapidapi-host", "booking-com.p.rapidapi.com" },
+        { "X-RapidAPI-Key", "0016d71d35msh16036b545e22b6ap10ed2fjsn50730392bc19" },
+        { "X-RapidAPI-Host", "booking-com.p.rapidapi.com" },
     },
-        };
-        using (var response = await client.SendAsync(request))
-        {
-            response.EnsureSuccessStatusCode();
-            var body = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(body);
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ExchangeViewModel>(body);
+                return View(values.exchange_rates.ToList());
+            }
         }
-        return View();
     }
 }
