@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6 d17.14
+VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiConsume", "ApiConsume", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.DtoLayer", "Hotel.DtoLayer\Hotel.DtoLayer.csproj", "{5625D5F5-60EE-4989-B34C-F0D1E7E8657C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.WebUI", "Hotel.WebUI\Hotel.WebUI.csproj", "{B9DE374C-05E8-41F4-B736-99538C3B17EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{74DCD7FA-260A-4437-A3A6-136213D9FBFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Consume", "RapidApi.Consume\Hotel.Consume.csproj", "{64E8597E-DCAA-4614-A226-CB53C4EF4878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{B9DE374C-05E8-41F4-B736-99538C3B17EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9DE374C-05E8-41F4-B736-99538C3B17EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9DE374C-05E8-41F4-B736-99538C3B17EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64E8597E-DCAA-4614-A226-CB53C4EF4878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64E8597E-DCAA-4614-A226-CB53C4EF4878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64E8597E-DCAA-4614-A226-CB53C4EF4878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64E8597E-DCAA-4614-A226-CB53C4EF4878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,7 @@ Global
 		{8A3CB790-5398-4B77-9A12-8FFC184D41D2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{5625D5F5-60EE-4989-B34C-F0D1E7E8657C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{B9DE374C-05E8-41F4-B736-99538C3B17EA} = {7379A860-1F51-4DFC-B879-FE39EF1C1455}
+		{64E8597E-DCAA-4614-A226-CB53C4EF4878} = {74DCD7FA-260A-4437-A3A6-136213D9FBFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0208E14D-7897-445F-AB41-7D394BDB77B4}
